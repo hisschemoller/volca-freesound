@@ -12,11 +12,18 @@ class Volca extends React.Component {
     title: PropTypes.string.isRequired,
   };
 
+  onStartClick() {
+    console.log('click');
+  }
+
   render() {
     return (
       <div className={s.root}>
         <div className={s.container}>
-          <h1>{this.props.title}</h1>
+          <h1 className={s.title}>{this.props.title}</h1>
+          <button type="button" onClick={this.onStartClick}>
+            Start
+          </button>
           <p>...</p>
         </div>
       </div>
