@@ -17,6 +17,10 @@ const routes = {
   children: [
     {
       path: '',
+      load: () => import(/* webpackChunkName: 'volca' */ './volca'),
+    },
+    {
+      path: '/home',
       load: () => import(/* webpackChunkName: 'home' */ './home'),
     },
     {
