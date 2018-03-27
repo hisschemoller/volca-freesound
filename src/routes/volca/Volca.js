@@ -8,11 +8,12 @@ import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Volca.css';
-import test from '../../actions/test';
+import fetchSounds from '../../actions/fetch_sounds';
 
 class Volca extends React.Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
+    dispatch: PropTypes.func.isRequired,
   };
 
   render() {
@@ -24,10 +25,13 @@ class Volca extends React.Component {
             type="button"
             onClick={e => {
               e.preventDefault();
-              test({
-                name: 'ja',
-                value: 10,
-              });
+              this.props.dispatch(
+                fetchSounds({
+                  query: '',
+                  page: 1,
+                  pageSize: 1,
+                }),
+              );
             }}
           >
             Start
