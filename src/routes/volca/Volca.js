@@ -3,12 +3,13 @@
  */
 
 import React from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Volca.css';
-import fetchSounds from '../../actions/fetch_sounds';
+import fetchSounds from '../../actions/fetchSounds.actions';
 
 class Volca extends React.Component {
   static propTypes = {

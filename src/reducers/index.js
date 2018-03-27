@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import user from './user';
 import runtime from './runtime';
-import test from './test';
+import sounds from './sounds';
 
 export default combineReducers({
   user,
   runtime,
-  test,
+  sounds,
 });
