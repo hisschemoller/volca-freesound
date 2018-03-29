@@ -14,7 +14,7 @@ function action() {
     // chunks: ['volca'],
     component: (
       <Layout>
-        <Volca title={title} />
+        <Volca title={title} numSounds={0} />
       </Layout>
     ),
   };

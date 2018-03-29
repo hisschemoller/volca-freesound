@@ -3,7 +3,7 @@ import {
   RECEIVE_RANDOM_SOUND,
   REJECT_RANDOM_SOUND,
 } from '../constants';
-import loadSound from './loadSound.actions';
+// import loadSound from './loadSound.actions';
 import { makeActionCreator, api } from './actionUtils';
 
 const requestRandomSound = makeActionCreator(REQUEST_RANDOM_SOUND, 'query');
@@ -30,7 +30,7 @@ export default function fetchRandomSound() {
       .then(
         json => {
           dispatch(receiveRandomSound(json.results[0]));
-          dispatch(loadSound(json.results[0].previews['preview-hq-mp3']));
+          // dispatch(loadSound(json.results[0].previews['preview-hq-mp3']));
         },
         error => dispatch(rejectRandomSound(error)),
       );

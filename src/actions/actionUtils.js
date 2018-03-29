@@ -18,6 +18,3 @@ export const api = {
   url: 'https://freesound.org/apiv2/',
   token: 'I4LLx1YDPjNbkBCuK0zYbQAV9njbRLJ9ZhctDhGP',
 };
-
-export const audioContext = new (window.AudioContext ||
-  window.webkitAudioContext)();
