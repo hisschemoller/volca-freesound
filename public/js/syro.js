@@ -8932,6 +8932,7 @@ function _SyroVolcaSample_GetFrameSize($num_of_block) {
  STACKTOP = sp;return ($add1|0);
 }
 function _malloc($bytes) {
+  console.log('_malloc', $bytes);
  $bytes = $bytes|0;
  var $$pre = 0, $$pre$i = 0, $$pre$i$i = 0, $$pre$i144 = 0, $$pre$i66$i = 0, $$pre$phi$i$iZ2D = 0, $$pre$phi$i145Z2D = 0, $$pre$phi$i67$iZ2D = 0, $$pre$phi$iZ2D = 0, $$pre$phiZ2D = 0, $0 = 0, $1 = 0, $10 = 0, $100 = 0, $101 = 0, $102 = 0, $103 = 0, $104 = 0, $105 = 0, $106 = 0;
  var $107 = 0, $108 = 0, $109 = 0, $11 = 0, $110 = 0, $111 = 0, $112 = 0, $113 = 0, $114 = 0, $115 = 0, $116 = 0, $117 = 0, $118 = 0, $119 = 0, $12 = 0, $120 = 0, $121 = 0, $122 = 0, $123 = 0, $124 = 0;
@@ -11394,6 +11395,7 @@ function _malloc($bytes) {
  STACKTOP = sp;return ($mem$0|0);
 }
 function _free($mem) {
+  console.log('_free', $mem);
  $mem = $mem|0;
  var $$pre = 0, $$pre$phiZ2D = 0, $0 = 0, $1 = 0, $10 = 0, $11 = 0, $12 = 0, $13 = 0, $14 = 0, $15 = 0, $16 = 0, $17 = 0, $18 = 0, $19 = 0, $2 = 0, $20 = 0, $21 = 0, $22 = 0, $23 = 0, $24 = 0;
  var $25 = 0, $26 = 0, $27 = 0, $28 = 0, $29 = 0, $3 = 0, $30 = 0, $31 = 0, $32 = 0, $33 = 0, $34 = 0, $35 = 0, $36 = 0, $37 = 0, $38 = 0, $39 = 0, $4 = 0, $40 = 0, $41 = 0, $42 = 0;
@@ -12618,7 +12620,10 @@ run();
         return output;
     }
 
-    var Syrialize = function(audio, num, callback) {
+    var Syrialize = function(blob, num, callback) {
+      
+      Module['TOTAL_MEMORY'] = 16777216 * 2;
+
         syro = Module.cwrap(
             'syrializer', 'number', ['number', 'number', 'number', 'number']
         );
@@ -12626,16 +12631,27 @@ run();
         var reader = new FileReader();
 
         reader.onload = function() {
-            data = new Uint8Array(reader.result);
+            
+            // Create a Uint8Array of the audio data.
+            const data = new Uint8Array(reader.result);
 
-            console.log("data=", data);
+            // nDataBytes if the size of the audio data in bytes.
+            // BYTES_PER_ELEMENT is 1 in this case,
+            // because in a Uint8Array one element is 8 bits is 1 byte.
             var nDataBytes = data.length * data.BYTES_PER_ELEMENT;
+            
+            // Malloc usually allocates memory to be used for some data.
+            // It returns a pointer to the address of the start of the allocated block. 
             var dataPtr = Module._malloc(nDataBytes);
+            console.log('dataPtr', dataPtr);
 
+            // HEAPU8 is a Uint8Array of size TOTAL_MEMORY
+            // Store audio data in HEAPU8 at offset dataPtr.
             HEAPU8.set(data, dataPtr);
-
+          
             var size_dest_bytes = 4; // 32 unsigned is 4 bytes;
             var size_dest_ptr = Module._malloc(size_dest_bytes);
+            console.log('size_dest_ptr', size_dest_ptr);
 
             var syralizedData = syro(dataPtr, size_dest_ptr, nDataBytes, num);
 
@@ -12646,6 +12662,9 @@ run();
             this.audio = new Blob(new Array(res.buffer), {
                 type: blob.type
             });
+
+            Module._free(size_dest_ptr);
+            // Module._free(dataPtr);
 
             callback(this.audio);
         };

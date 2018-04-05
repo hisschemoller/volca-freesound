@@ -7,14 +7,16 @@ export const receiveSounds = makeActionCreator(RECEIVE_SOUNDS, 'json');
 export const rejectSounds = makeActionCreator(REJECT_SOUNDS, 'error');
 
 export default function fetchSounds(payload) {
-  return dispatch => {
+  return (dispatch, getState) => {
+    const state = getState();
     const { query, page, pageSize } = { ...payload };
     const fields = 'id';
+    const filter = `duration:[0 TO ${state.sounds.maxDuration}]`;
     dispatch(requestSounds(query));
     return fetch(
       `${
         api.url
-      }search/text/?format=json&query=${query}&page=${page}&page_size=${pageSize}&fields=${fields}&token=${
+      }search/text/?format=json&query=${query}&page=${page}&page_size=${pageSize}&fields=${fields}&filter=${filter}&token=${
         api.token
       }`,
     )

@@ -81,6 +81,7 @@ class Html extends React.Component {
               defer
             />
           )}
+          <script src="js/syro.js" />
         </body>
       </html>
     );

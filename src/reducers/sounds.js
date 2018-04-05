@@ -1,16 +1,32 @@
-import { RECEIVE_SOUNDS, RECEIVE_RANDOM_SOUND } from '../constants';
+import {
+  RECEIVE_SOUNDS,
+  RECEIVE_RANDOM_SOUND,
+  PLAY_START,
+  PLAY_END,
+} from '../constants';
 
 const defaultState = {
+  channel: 0,
   count: 0,
+  duration: 0,
+  maxDuration: 4,
   sounds: { allIds: [], byId: {} },
+  totalDuration: 0,
 };
 
 export default function sounds(state = defaultState, action) {
   switch (action.type) {
-    case RECEIVE_SOUNDS:
+    case PLAY_START:
       return {
         ...state,
-        count: action.json.count,
+        duration: action.duration,
+      };
+    case PLAY_END:
+      return {
+        ...state,
+        channel: state.channel + 1,
+        duration: 0,
+        totalDuration: state.totalDuration + state.duration,
       };
     case RECEIVE_RANDOM_SOUND:
       return {
@@ -30,6 +46,11 @@ export default function sounds(state = defaultState, action) {
             },
           },
         },
+      };
+    case RECEIVE_SOUNDS:
+      return {
+        ...state,
+        count: action.json.count,
       };
 
     default:
