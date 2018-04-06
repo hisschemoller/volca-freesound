@@ -123,10 +123,10 @@ else if (ENVIRONMENT_IS_WEB || ENVIRONMENT_IS_WORKER) {
 
   if (typeof console !== 'undefined') {
     if (!Module['print']) Module['print'] = function print(x) {
-      console.log(x);
+      // console.log(x);
     };
     if (!Module['printErr']) Module['printErr'] = function printErr(x) {
-      console.log(x);
+      // console.log(x);
     };
   } else {
     // Probably a worker, and without console.log. We can do very little here...
@@ -1031,7 +1031,7 @@ if (totalMemory !== TOTAL_MEMORY) {
 // check for full engine support (use string 'subarray' to avoid closure compiler confusion)
 assert(typeof Int32Array !== 'undefined' && typeof Float64Array !== 'undefined' && !!(new Int32Array(1)['subarray']) && !!(new Int32Array(1)['set']),
        'JS engine does not provide full typed array support');
-
+console.log(`buffer is ${TOTAL_MEMORY / 1000000} MB`);
 var buffer = new ArrayBuffer(TOTAL_MEMORY);
 HEAP8 = new Int8Array(buffer);
 HEAP16 = new Int16Array(buffer);
@@ -8932,7 +8932,6 @@ function _SyroVolcaSample_GetFrameSize($num_of_block) {
  STACKTOP = sp;return ($add1|0);
 }
 function _malloc($bytes) {
-  console.log('_malloc', $bytes);
  $bytes = $bytes|0;
  var $$pre = 0, $$pre$i = 0, $$pre$i$i = 0, $$pre$i144 = 0, $$pre$i66$i = 0, $$pre$phi$i$iZ2D = 0, $$pre$phi$i145Z2D = 0, $$pre$phi$i67$iZ2D = 0, $$pre$phi$iZ2D = 0, $$pre$phiZ2D = 0, $0 = 0, $1 = 0, $10 = 0, $100 = 0, $101 = 0, $102 = 0, $103 = 0, $104 = 0, $105 = 0, $106 = 0;
  var $107 = 0, $108 = 0, $109 = 0, $11 = 0, $110 = 0, $111 = 0, $112 = 0, $113 = 0, $114 = 0, $115 = 0, $116 = 0, $117 = 0, $118 = 0, $119 = 0, $12 = 0, $120 = 0, $121 = 0, $122 = 0, $123 = 0, $124 = 0;
@@ -11395,7 +11394,6 @@ function _malloc($bytes) {
  STACKTOP = sp;return ($mem$0|0);
 }
 function _free($mem) {
-  console.log('_free', $mem);
  $mem = $mem|0;
  var $$pre = 0, $$pre$phiZ2D = 0, $0 = 0, $1 = 0, $10 = 0, $11 = 0, $12 = 0, $13 = 0, $14 = 0, $15 = 0, $16 = 0, $17 = 0, $18 = 0, $19 = 0, $2 = 0, $20 = 0, $21 = 0, $22 = 0, $23 = 0, $24 = 0;
  var $25 = 0, $26 = 0, $27 = 0, $28 = 0, $29 = 0, $3 = 0, $30 = 0, $31 = 0, $32 = 0, $33 = 0, $34 = 0, $35 = 0, $36 = 0, $37 = 0, $38 = 0, $39 = 0, $4 = 0, $40 = 0, $41 = 0, $42 = 0;
@@ -12622,7 +12620,7 @@ run();
 
     var Syrialize = function(blob, num, callback) {
       
-      Module['TOTAL_MEMORY'] = 16777216 * 2;
+      Module['TOTAL_MEMORY'] = 16777216 * 32; // 512MB
 
         syro = Module.cwrap(
             'syrializer', 'number', ['number', 'number', 'number', 'number']
@@ -12643,7 +12641,6 @@ run();
             // Malloc usually allocates memory to be used for some data.
             // It returns a pointer to the address of the start of the allocated block. 
             var dataPtr = Module._malloc(nDataBytes);
-            console.log('dataPtr', dataPtr);
 
             // HEAPU8 is a Uint8Array of size TOTAL_MEMORY
             // Store audio data in HEAPU8 at offset dataPtr.
@@ -12651,7 +12648,6 @@ run();
           
             var size_dest_bytes = 4; // 32 unsigned is 4 bytes;
             var size_dest_ptr = Module._malloc(size_dest_bytes);
-            console.log('size_dest_ptr', size_dest_ptr);
 
             var syralizedData = syro(dataPtr, size_dest_ptr, nDataBytes, num);
 
@@ -12662,9 +12658,6 @@ run();
             this.audio = new Blob(new Array(res.buffer), {
                 type: blob.type
             });
-
-            Module._free(size_dest_ptr);
-            // Module._free(dataPtr);
 
             callback(this.audio);
         };

@@ -35,12 +35,6 @@ function floatTo16BitPCM(output, offset, input) {
       }
     }
   }
-
-  // let offst = offset;
-  // for (let i = 0; i < input.length; i += 1, offst += 2) {
-  //   const s = Math.max(-1, Math.min(1, input[i]));
-  //   output.setInt16(offst, s < 0 ? s * 0x8000 : s * 0x7fff, true);
-  // }
 }
 
 /**
@@ -83,15 +77,8 @@ function bufferToWav(samples, numChannels, sampleRate) {
 
   floatTo16BitPCM(view, 44, samples);
 
-  // let offset = 0;
-  // while (offset < samples.length) {
-  //   console.log('samples', offset, samples[offset]);
-  //   offset += 1000;
-  // }
-
   let offset = 1000;
   while (offset < view.byteLength) {
-    // console.log('view', offset, view.getInt16(offset));
     offset += 2400;
   }
 
@@ -100,31 +87,6 @@ function bufferToWav(samples, numChannels, sampleRate) {
 
   return audioBlob;
 }
-
-// function blobTo(blob) {
-//   const fileReader = new FileReader();
-//   fileReader.onload = () => {
-//     arrayBuffer = fileReader.result;
-//   };
-//   fileReader.readAsArrayBuffer(blob);
-// }
-
-/**
- * Trigger the download of a file.
- * @param {Blob} blob
- * @param {String} filename
- */
-// function forceDownload(blob, filename) {
-//   const url = (window.URL || window.webkitURL).createObjectURL(blob);
-//   const link = window.document.createElement('a');
-//   link.href = url;
-//   link.download = filename || 'output.wav';
-//   const click = document.createEvent('Event');
-//   click.initEvent('click', true, true);
-//   link.dispatchEvent(click);
-//   console.log('forceDownload click', click);
-//   console.log('forceDownload link', link);
-// }
 
 /**
  * Load an MP3 audio file from the provided URL,
@@ -139,34 +101,21 @@ export default function loadSound(url, audioContext) {
     dispatch(requestSound());
     if (url) {
       fetch(url).then(response => {
-        // console.log('response', response.length, response);
-        // response.arrayBuffer() takes a Response stream and reads it to completion.
-        // It returns a promise that resolves with an ArrayBuffer.
         response.arrayBuffer().then(arrayBuffer => {
-          // console.log('buffer', arrayBuffer.length, arrayBuffer);
           audioContext.decodeAudioData(arrayBuffer).then(audioBuffer => {
-            // console.log('audioBuffer', audioBuffer.length, audioBuffer);
             const wavBlob = bufferToWav(
               audioBuffer,
               audioBuffer.numberOfChannels,
               audioBuffer.sampleRate,
             );
-            // console.log('blob', wavBlob.length, wavBlob);
-
-            // const channel = state.sounds.channel;
-            // console.log('channel', channel);
             const state = getState();
             Syrialize(wavBlob, state.sounds.channel, syroBlob => {
-              // console.log('syroBlob', syroBlob);
-              // forceDownload(syroBlob, `${channel}_syro.wav`);
               const fileReader = new FileReader();
               fileReader.onload = () => {
                 const syroArrayBuffer = fileReader.result;
-                // console.log('syroArrayBuffer', syroArrayBuffer);
                 audioContext
                   .decodeAudioData(syroArrayBuffer)
                   .then(syroAudioBuffer => {
-                    // console.log('syroAudioBuffer', syroAudioBuffer);
                     dispatch(playSound(audioContext, syroAudioBuffer));
                   });
               };

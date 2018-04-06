@@ -18,8 +18,7 @@ export default function sounds(state = defaultState, action) {
   switch (action.type) {
     case PLAY_START:
       return {
-        ...state,
-        duration: action.duration,
+        ...state
       };
     case PLAY_END:
       return {
@@ -31,6 +30,7 @@ export default function sounds(state = defaultState, action) {
     case RECEIVE_RANDOM_SOUND:
       return {
         ...state,
+        duration: action.sound.duration,
         sounds: {
           allIds: [...state.sounds.allIds, action.sound.id],
           byId: {
