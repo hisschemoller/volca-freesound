@@ -20,12 +20,13 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Volca.css';
 import fetchRandomSound from '../../actions/fetchRandomSound.actions';
 import fetchSounds from '../../actions/fetchSounds.actions';
-import loadSound from '../../actions/loadSound.actions';
 import {
   setFrom,
   setTo,
   setDurationMax,
 } from '../../actions/changeSetting.actions';
+
+let audioContext;
 
 class Volca extends React.Component {
   static propTypes = {
@@ -34,22 +35,11 @@ class Volca extends React.Component {
     channelMax: PropTypes.number.isRequired,
     dispatch: PropTypes.func.isRequired,
     durationMax: PropTypes.number.isRequired,
-    hasNewSound: PropTypes.bool,
-    numSounds: PropTypes.number.isRequired,
-    sounds: PropTypes.shape({
-      allIds: PropTypes.array,
-      byId: PropTypes.shape({}),
-    }),
+    position: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
   };
 
-  static defaultProps = {
-    hasNewSound: false,
-    sounds: {
-      allIds: [],
-      byId: {},
-    },
-  };
+  static defaultProps = {};
 
   /**
    * When the component mounts:
@@ -57,8 +47,7 @@ class Volca extends React.Component {
    * Get the total amount of available sounds from Freesound.
    */
   componentDidMount() {
-    this.audioContext = new (window.AudioContext ||
-      window.webkitAudioContext)();
+    audioContext = new (window.AudioContext || window.webkitAudioContext)();
     this.props.dispatch(
       fetchSounds({
         query: '',
@@ -68,21 +57,8 @@ class Volca extends React.Component {
     );
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.hasNewSound) {
-      this.props.dispatch(
-        loadSound(
-          nextProps.sounds.byId[
-            nextProps.sounds.allIds[nextProps.numSounds - 1]
-          ].preview,
-          this.audioContext,
-        ),
-      );
-    }
-  }
-
   componentWillUnmount() {
-    this.audioContext.close();
+    audioContext.close();
   }
 
   render() {
@@ -148,24 +124,25 @@ class Volca extends React.Component {
           >
             Start
           </button>
-          <p>...</p>
+          <span>{Math.round(this.props.position * 100)}</span>
         </div>
       </div>
     );
   }
 }
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state) {
   return {
     channelFirst: state.sounds.channelFirst,
     channelLast: state.sounds.channelLast,
     channelMax: state.sounds.channelMax,
-    count: state.sounds.count,
     durationMax: state.sounds.durationMax,
-    hasNewSound: state.sounds.sounds.allIds.length !== ownProps.numSounds,
-    numSounds: state.sounds.sounds.allIds.length,
-    sounds: state.sounds.sounds,
+    position: state.sounds.position,
   };
 }
 
 export default compose(withStyles(s), connect(mapStateToProps))(Volca);
+
+export function getAudioContext() {
+  return audioContext;
+}

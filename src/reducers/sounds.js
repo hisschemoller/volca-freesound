@@ -6,6 +6,7 @@ import {
   RECEIVE_RANDOM_SOUND,
   PLAY_START,
   PLAY_END,
+  PLAY_PROGRESS,
 } from '../constants';
 
 const initialState = {
@@ -16,12 +17,19 @@ const initialState = {
   count: 0,
   duration: 0,
   durationMax: 4,
+  position: 0,
   sounds: { allIds: [], byId: {} },
   totalDuration: 0,
 };
 
 export default function sounds(state = initialState, action) {
+  let channel;
   switch (action.type) {
+    case PLAY_PROGRESS:
+      return {
+        ...state,
+        position: action.position,
+      };
     case PLAY_START:
       return {
         ...state,
@@ -59,12 +67,14 @@ export default function sounds(state = initialState, action) {
         count: action.json.count,
       };
     case SET_FROM:
+      channel = Math.max(
+        0,
+        Math.min(Math.round(action.value), state.channelMax),
+      );
       return {
         ...state,
-        channelFirst: Math.max(
-          0,
-          Math.min(Math.round(action.value), state.channelMax),
-        ),
+        channelFirst: channel,
+        channel,
       };
     case SET_TO:
       return {

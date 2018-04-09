@@ -1,6 +1,7 @@
 import { REQUEST_SOUND, RECEIVE_SOUND, REJECT_SOUND } from '../constants';
 import playSound from './playSound.actions';
 import { makeActionCreator } from './actionUtils';
+import { getAudioContext } from '../routes/volca/Volca';
 
 const requestSound = makeActionCreator(REQUEST_SOUND, 'query');
 const receiveSound = makeActionCreator(RECEIVE_SOUND, 'json');
@@ -94,14 +95,14 @@ function bufferToWav(samples, numChannels, sampleRate) {
  * convert that to a Syro type audio file
  * and start playback (to the connected Volca Sample).
  * @param {*} url
- * @param {*} audioContext
  */
-export default function loadSound(url, audioContext) {
+export default function loadSound(url) {
   return (dispatch, getState) => {
     dispatch(requestSound());
     if (url) {
       fetch(url).then(response => {
         response.arrayBuffer().then(arrayBuffer => {
+          const audioContext = getAudioContext();
           audioContext.decodeAudioData(arrayBuffer).then(audioBuffer => {
             const wavBlob = bufferToWav(
               audioBuffer,
