@@ -13,3 +13,6 @@ export const REJECT_SOUND = 'REJECT_SOUND';
 export const PLAY_START = 'PLAY_START';
 export const PLAY_PROGRESS = 'PLAY_PROGRESS';
 export const PLAY_END = 'PLAY_END';
+export const SET_FROM = 'SET_FROM';
+export const SET_TO = 'SET_TO';
+export const SET_DURATION_MAX = 'SET_DURATION_MAX';

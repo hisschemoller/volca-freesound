@@ -1,24 +1,30 @@
 import {
+  SET_DURATION_MAX,
+  SET_FROM,
+  SET_TO,
   RECEIVE_SOUNDS,
   RECEIVE_RANDOM_SOUND,
   PLAY_START,
   PLAY_END,
 } from '../constants';
 
-const defaultState = {
+const initialState = {
   channel: 0,
+  channelFirst: 0,
+  channelLast: 99,
+  channelMax: 99,
   count: 0,
   duration: 0,
-  maxDuration: 4,
+  durationMax: 4,
   sounds: { allIds: [], byId: {} },
   totalDuration: 0,
 };
 
-export default function sounds(state = defaultState, action) {
+export default function sounds(state = initialState, action) {
   switch (action.type) {
     case PLAY_START:
       return {
-        ...state
+        ...state,
       };
     case PLAY_END:
       return {
@@ -52,7 +58,27 @@ export default function sounds(state = defaultState, action) {
         ...state,
         count: action.json.count,
       };
-
+    case SET_FROM:
+      return {
+        ...state,
+        channelFirst: Math.max(
+          0,
+          Math.min(Math.round(action.value), state.channelMax),
+        ),
+      };
+    case SET_TO:
+      return {
+        ...state,
+        channelLast: Math.max(
+          0,
+          Math.min(Math.round(action.value), state.channelMax),
+        ),
+      };
+    case SET_DURATION_MAX:
+      return {
+        ...state,
+        durationMax: Math.max(0, action.value),
+      };
     default:
       return state;
   }

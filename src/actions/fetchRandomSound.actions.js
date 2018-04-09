@@ -13,7 +13,7 @@ export default function fetchRandomSound() {
   return (dispatch, getState) => {
     const state = getState();
     const fields = 'id,url,name,license,type,duration,username,previews';
-    const filter = `duration:[0 TO ${state.sounds.maxDuration}]`;
+    const filter = `duration:[0 TO ${state.sounds.durationMax}]`;
     const pageNr = Math.floor(Math.random() * state.sounds.count);
     dispatch(requestRandomSound());
     return fetch(

@@ -20,17 +20,26 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Volca.css';
 import fetchSounds from '../../actions/fetchSounds.actions';
 import loadSound from '../../actions/loadSound.actions';
+import {
+  setFrom,
+  setTo,
+  setDurationMax,
+} from '../../actions/changeSetting.actions';
 
 class Volca extends React.Component {
   static propTypes = {
-    title: PropTypes.string.isRequired,
+    channelFirst: PropTypes.number.isRequired,
+    channelLast: PropTypes.number.isRequired,
+    channelMax: PropTypes.number.isRequired,
     dispatch: PropTypes.func.isRequired,
+    durationMax: PropTypes.number.isRequired,
     hasNewSound: PropTypes.bool,
     numSounds: PropTypes.number.isRequired,
     sounds: PropTypes.shape({
       allIds: PropTypes.array,
       byId: PropTypes.shape({}),
     }),
+    title: PropTypes.string.isRequired,
   };
 
   static defaultProps = {
@@ -68,6 +77,48 @@ class Volca extends React.Component {
       <div className={s.root}>
         <div className={s.container}>
           <h1 className={s.title}>{this.props.title}</h1>
+          <label htmlFor="duration_max">
+            <span>Max. duration</span>
+            <input
+              type="number"
+              min="0"
+              max="none"
+              value={this.props.durationMax}
+              id="duration_max"
+              onChange={e => {
+                e.preventDefault();
+                this.props.dispatch(setDurationMax(e.target.value));
+              }}
+            />
+          </label>
+          <label htmlFor="from">
+            <span>From</span>
+            <input
+              type="number"
+              min="0"
+              max={this.props.channelMax}
+              value={this.props.channelFirst}
+              id="from"
+              onChange={e => {
+                e.preventDefault();
+                this.props.dispatch(setFrom(e.target.value));
+              }}
+            />
+          </label>
+          <label htmlFor="to">
+            <span>To</span>
+            <input
+              type="number"
+              min="0"
+              max={this.props.channelMax}
+              value={this.props.channelLast}
+              id="to"
+              onChange={e => {
+                e.preventDefault();
+                this.props.dispatch(setTo(e.target.value));
+              }}
+            />
+          </label>
           <button
             type="button"
             onClick={e => {
@@ -92,10 +143,14 @@ class Volca extends React.Component {
 
 function mapStateToProps(state, ownProps) {
   return {
+    channelFirst: state.sounds.channelFirst,
+    channelLast: state.sounds.channelLast,
+    channelMax: state.sounds.channelMax,
     count: state.sounds.count,
-    sounds: state.sounds.sounds,
-    numSounds: state.sounds.sounds.allIds.length,
+    durationMax: state.sounds.durationMax,
     hasNewSound: state.sounds.sounds.allIds.length !== ownProps.numSounds,
+    numSounds: state.sounds.sounds.allIds.length,
+    sounds: state.sounds.sounds,
   };
 }
 
