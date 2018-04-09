@@ -11,7 +11,7 @@ export default function playSound(audioContext, audioBuffer) {
     const bufferSource = audioContext.createBufferSource();
     bufferSource.buffer = audioBuffer;
     bufferSource.connect(audioContext.destination);
-    bufferSource.onended = e => {
+    bufferSource.onended = () => {
       dispatch(playEnd());
       dispatch(evaluateSounds());
     };

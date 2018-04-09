@@ -24,7 +24,6 @@ export default function fetchSounds(payload) {
       .then(
         json => {
           dispatch(receiveSounds(json));
-          dispatch(fetchRandomSound());
         },
         error => dispatch(rejectSounds(error)),
       );

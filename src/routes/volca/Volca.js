@@ -18,6 +18,7 @@ import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Volca.css';
+import fetchRandomSound from '../../actions/fetchRandomSound.actions';
 import fetchSounds from '../../actions/fetchSounds.actions';
 import loadSound from '../../actions/loadSound.actions';
 import {
@@ -50,9 +51,21 @@ class Volca extends React.Component {
     },
   };
 
+  /**
+   * When the component mounts:
+   * Create an AudioContext to play the encoded samples.
+   * Get the total amount of available sounds from Freesound.
+   */
   componentDidMount() {
     this.audioContext = new (window.AudioContext ||
       window.webkitAudioContext)();
+    this.props.dispatch(
+      fetchSounds({
+        query: '',
+        page: 1,
+        pageSize: 1,
+      }),
+    );
   }
 
   componentWillReceiveProps(nextProps) {
@@ -88,6 +101,13 @@ class Volca extends React.Component {
               onChange={e => {
                 e.preventDefault();
                 this.props.dispatch(setDurationMax(e.target.value));
+                this.props.dispatch(
+                  fetchSounds({
+                    query: '',
+                    page: 1,
+                    pageSize: 1,
+                  }),
+                );
               }}
             />
           </label>
@@ -123,13 +143,7 @@ class Volca extends React.Component {
             type="button"
             onClick={e => {
               e.preventDefault();
-              this.props.dispatch(
-                fetchSounds({
-                  query: '',
-                  page: 1,
-                  pageSize: 1,
-                }),
-              );
+              this.props.dispatch(fetchRandomSound());
             }}
           >
             Start
