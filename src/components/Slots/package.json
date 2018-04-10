@@ -1,0 +1,6 @@
+{
+  "name": "slots",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./Slots.js"
+}

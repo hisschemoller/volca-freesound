@@ -21,10 +21,12 @@ import s from './Volca.css';
 import fetchRandomSound from '../../actions/fetchRandomSound.actions';
 import fetchSounds from '../../actions/fetchSounds.actions';
 import {
+  initialize,
   setFrom,
   setTo,
   setDurationMax,
-} from '../../actions/changeSetting.actions';
+} from '../../actions/volca.actions';
+import Slots from '../../components/Slots'
 
 let audioContext;
 
@@ -33,6 +35,7 @@ class Volca extends React.Component {
     channelFirst: PropTypes.number.isRequired,
     channelLast: PropTypes.number.isRequired,
     channelMax: PropTypes.number.isRequired,
+    count: PropTypes.number.isRequired,
     dispatch: PropTypes.func.isRequired,
     durationMax: PropTypes.number.isRequired,
     position: PropTypes.number.isRequired,
@@ -48,6 +51,7 @@ class Volca extends React.Component {
    */
   componentDidMount() {
     audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    this.props.dispatch(initialize());
     this.props.dispatch(
       fetchSounds({
         query: '',
@@ -66,6 +70,11 @@ class Volca extends React.Component {
       <div className={s.root}>
         <div className={s.container}>
           <h1 className={s.title}>{this.props.title}</h1>
+          <span className={s.samplecount}>
+            {this.props.count > 0
+              ? `${this.props.count} samples found`
+              : `No samples available.`}
+          </span>
           <label htmlFor="duration_max">
             <span>Max. duration</span>
             <input
@@ -124,7 +133,11 @@ class Volca extends React.Component {
           >
             Start
           </button>
-          <span>{Math.round(this.props.position * 100)}</span>
+          <div>
+            <progress max="1" value={this.props.position} />
+            <span>{Math.round(this.props.position * 100)}%</span>
+          </div>
+          <Slots />
         </div>
       </div>
     );
@@ -136,6 +149,7 @@ function mapStateToProps(state) {
     channelFirst: state.sounds.channelFirst,
     channelLast: state.sounds.channelLast,
     channelMax: state.sounds.channelMax,
+    count: state.sounds.count,
     durationMax: state.sounds.durationMax,
     position: state.sounds.position,
   };

@@ -1,13 +1,30 @@
 import {
+  INITIALIZE,
   SET_DURATION_MAX,
   SET_FROM,
   SET_TO,
   RECEIVE_SOUNDS,
   RECEIVE_RANDOM_SOUND,
+  REQUEST_RANDOM_SOUND,
   PLAY_START,
   PLAY_END,
   PLAY_PROGRESS,
 } from '../constants';
+
+function updateSlots(state, rangeFirst, rangeLast, activeIndex) {
+  let value;
+  return state.slots.reduce((accumulator, currentValue, currentIndex) => {
+    if (currentIndex === activeIndex && state.status === 1) {
+      value = 3;
+    } else if (state.rangeFirst <= currentIndex && currentIndex <= rangeLast) {
+      value = 1;
+    } else {
+      value = 0;
+    }
+    accumulator.push(value);
+    return accumulator;
+  }, []);
+}
 
 const initialState = {
   channel: 0,
@@ -18,7 +35,11 @@ const initialState = {
   duration: 0,
   durationMax: 4,
   position: 0,
+  slotCount: 100,
+  slotIndex: 0,
+  slots: [],
   sounds: { allIds: [], byId: {} },
+  status: 0, // 0=idle | 1=active
   totalDuration: 0,
 };
 
@@ -39,7 +60,13 @@ export default function sounds(state = initialState, action) {
         ...state,
         channel: state.channel + 1,
         duration: 0,
+        status: 0,
         totalDuration: state.totalDuration + state.duration,
+      };
+    case REQUEST_RANDOM_SOUND:
+      return {
+        ...state,
+        status: 1,
       };
     case RECEIVE_RANDOM_SOUND:
       return {
@@ -75,19 +102,27 @@ export default function sounds(state = initialState, action) {
         ...state,
         channelFirst: channel,
         channel,
+        slots: updateSlots(state, channel, state.channelLast, channel),
       };
     case SET_TO:
+      channel = Math.max(
+        0,
+        Math.min(Math.round(action.value), state.channelMax),
+      );
       return {
         ...state,
-        channelLast: Math.max(
-          0,
-          Math.min(Math.round(action.value), state.channelMax),
-        ),
+        channelLast: channel,
+        slots: updateSlots(state, state.channelFirst, channel, state.channel),
       };
     case SET_DURATION_MAX:
       return {
         ...state,
         durationMax: Math.max(0, action.value),
+      };
+    case INITIALIZE:
+      return {
+        ...state,
+        slots: new Array(state.slotCount).fill(1, 0, state.slotCount),
       };
     default:
       return state;

@@ -1,5 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 
+export const INITIALIZE = 'INITIALIZE';
 export const SET_RUNTIME_VARIABLE = 'SET_RUNTIME_VARIABLE';
 export const REQUEST_SOUNDS = 'REQUEST_SOUNDS';
 export const RECEIVE_SOUNDS = 'RECEIVE_SOUNDS';

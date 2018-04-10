@@ -1,0 +1,26 @@
+@import '../variables.css';
+
+.root {
+  border: 1px solid #ccc;
+  font-size: 9px;
+  height: 12px;
+  margin: 1px;
+  text-align: center;
+  width: 12px;
+}
+.root[data-status='0'] {
+  background: #fff;
+  color: #ccc;
+}
+.root[data-status='1'] {
+  background: #eee;
+  color: #aaa;
+}
+.root[data-status='2'] {
+  background: #999;
+  color: #fff;
+}
+.root[data-status='3'] {
+  background: #333;
+  color: #fff;
+}
