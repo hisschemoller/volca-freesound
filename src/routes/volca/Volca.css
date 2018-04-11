@@ -28,4 +28,7 @@
  .samplecount {
    display: block;
  }
+ .row {
+   border-top: 1px solid #ccc;
+ }
  

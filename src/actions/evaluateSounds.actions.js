@@ -6,9 +6,11 @@ export default function evaluateSounds() {
     const state = getState();
     if (
       state.sounds.totalDuration < durationMax &&
-      state.sounds.channel <= state.sounds.channelLast
+      state.sounds.slots.findIndex(slot => slot === 1) !== -1
     ) {
       dispatch(fetchRandomSound());
+    } else {
+      console.log('done');
     }
   };
 }

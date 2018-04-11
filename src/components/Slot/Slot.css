@@ -5,6 +5,8 @@
   font-size: 9px;
   height: 12px;
   margin: 1px;
+  outline: none;
+  padding: 0;
   text-align: center;
   width: 12px;
 }

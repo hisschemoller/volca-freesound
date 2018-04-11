@@ -10,6 +10,12 @@
  * 4. transfer
  * 4a. update view while transferring
  * 5. done transferring
+ *
+ * 1. Initially all slots are selected.
+ * 2. Range selectors adjust the range from first to last slot.
+ * 3. All and Clear buttons to select all or no slots.
+ * 4. Slots are clickable to toggle individual slots.
+ * 5. Click and drag to select multiple slots.
  */
 
 import React from 'react';
@@ -21,20 +27,24 @@ import s from './Volca.css';
 import fetchRandomSound from '../../actions/fetchRandomSound.actions';
 import fetchSounds from '../../actions/fetchSounds.actions';
 import {
+  clearAll,
   initialize,
-  setFrom,
-  setTo,
+  selectAll,
   setDurationMax,
+  setRange,
+  setRangeFirst,
+  setRangeLast,
+  start,
 } from '../../actions/volca.actions';
-import Slots from '../../components/Slots'
+import Slots from '../../components/Slots';
 
 let audioContext;
 
 class Volca extends React.Component {
   static propTypes = {
-    channelFirst: PropTypes.number.isRequired,
-    channelLast: PropTypes.number.isRequired,
-    channelMax: PropTypes.number.isRequired,
+    rangeFirst: PropTypes.number.isRequired,
+    rangeLast: PropTypes.number.isRequired,
+    slotCount: PropTypes.number.isRequired,
     count: PropTypes.number.isRequired,
     dispatch: PropTypes.func.isRequired,
     durationMax: PropTypes.number.isRequired,
@@ -75,67 +85,101 @@ class Volca extends React.Component {
               ? `${this.props.count} samples found`
               : `No samples available.`}
           </span>
-          <label htmlFor="duration_max">
-            <span>Max. duration</span>
-            <input
-              type="number"
-              min="0"
-              max="none"
-              value={this.props.durationMax}
-              id="duration_max"
-              onChange={e => {
-                e.preventDefault();
-                this.props.dispatch(setDurationMax(e.target.value));
-                this.props.dispatch(
-                  fetchSounds({
-                    query: '',
-                    page: 1,
-                    pageSize: 1,
-                  }),
-                );
-              }}
-            />
-          </label>
-          <label htmlFor="from">
-            <span>From</span>
-            <input
-              type="number"
-              min="0"
-              max={this.props.channelMax}
-              value={this.props.channelFirst}
-              id="from"
-              onChange={e => {
-                e.preventDefault();
-                this.props.dispatch(setFrom(e.target.value));
-              }}
-            />
-          </label>
-          <label htmlFor="to">
-            <span>To</span>
-            <input
-              type="number"
-              min="0"
-              max={this.props.channelMax}
-              value={this.props.channelLast}
-              id="to"
-              onChange={e => {
-                e.preventDefault();
-                this.props.dispatch(setTo(e.target.value));
-              }}
-            />
-          </label>
-          <button
-            type="button"
-            onClick={e => {
-              e.preventDefault();
-              this.props.dispatch(fetchRandomSound());
-            }}
-          >
-            Start
-          </button>
-          <div>
+          <div className={s.row}>
             <progress max="1" value={this.props.position} />
             <span>{Math.round(this.props.position * 100)}%</span>
+            <button
+              type="button"
+              onClick={e => {
+                e.preventDefault();
+                this.props.dispatch(start());
+                this.props.dispatch(fetchRandomSound());
+              }}
+            >
+              Start
+            </button>
+          </div>
+          <div className={s.row}>
+            <label htmlFor="duration_max">
+              <span>Max. duration</span>
+              <input
+                type="number"
+                min="0"
+                max="none"
+                value={this.props.durationMax}
+                id="duration_max"
+                onChange={e => {
+                  e.preventDefault();
+                  this.props.dispatch(setDurationMax(e.target.value));
+                  this.props.dispatch(
+                    fetchSounds({
+                      query: '',
+                      page: 1,
+                      pageSize: 1,
+                    }),
+                  );
+                }}
+              />
+            </label>
+          </div>
+          <div className={s.row}>
+            <label htmlFor="from">
+              <span>From</span>
+              <input
+                type="number"
+                min="0"
+                max={this.props.slotCount - 1}
+                value={this.props.rangeFirst}
+                id="from"
+                onChange={e => {
+                  e.preventDefault();
+                  this.props.dispatch(setRangeFirst(e.target.value));
+                }}
+              />
+            </label>
+            <label htmlFor="to">
+              <span>To</span>
+              <input
+                type="number"
+                min="0"
+                max={this.props.slotCount - 1}
+                value={this.props.rangeLast}
+                id="to"
+                onChange={e => {
+                  e.preventDefault();
+                  this.props.dispatch(setRangeLast(e.target.value));
+                }}
+              />
+            </label>
+            <button
+              type="button"
+              onClick={e => {
+                e.preventDefault();
+                this.props.dispatch(setRange());
+              }}
+            >
+              Set range
+            </button>
+          </div>
+          <div className={s.row}>
+            <button
+              type="button"
+              onClick={e => {
+                e.preventDefault();
+                this.props.dispatch(clearAll());
+              }}
+            >
+              Clear All
+            </button>
+            <button
+              type="button"
+              onClick={e => {
+                e.preventDefault();
+                this.props.dispatch(selectAll());
+              }}
+            >
+              Select All
+            </button>
           </div>
           <Slots />
         </div>
@@ -146,9 +190,9 @@ class Volca extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    channelFirst: state.sounds.channelFirst,
-    channelLast: state.sounds.channelLast,
-    channelMax: state.sounds.channelMax,
+    rangeFirst: state.sounds.rangeFirst,
+    rangeLast: state.sounds.rangeLast,
+    slotCount: state.sounds.slotCount,
     count: state.sounds.count,
     durationMax: state.sounds.durationMax,
     position: state.sounds.position,

@@ -110,7 +110,7 @@ export default function loadSound(url) {
               audioBuffer.sampleRate,
             );
             const state = getState();
-            window.Syrialize(wavBlob, state.sounds.channel, syroBlob => {
+            window.Syrialize(wavBlob, state.sounds.slotIndex, syroBlob => {
               const fileReader = new FileReader();
               fileReader.onload = () => {
                 const syroArrayBuffer = fileReader.result;

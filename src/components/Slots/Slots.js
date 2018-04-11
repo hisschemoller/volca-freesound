@@ -8,17 +8,22 @@ import s from './Slots.css';
 
 class Slots extends React.Component {
   static propTypes = {
+    slotIndex: PropTypes.number.isRequired,
     slots: PropTypes.arrayOf(PropTypes.number).isRequired,
   };
 
   static defaultProps = {};
 
   render() {
-    const { channel, slots } = this.props;
+    const { slotIndex, slots } = this.props;
     return (
       <div className={s.root}>
         {slots.map((status, index) => (
-          <Slot key={index.toString()} status={index === channel ? 3 : status} index={index} />
+          <Slot
+            key={index.toString()}
+            status={index === slotIndex ? 3 : status}
+            index={index}
+          />
         ))}
       </div>
     );
@@ -27,7 +32,7 @@ class Slots extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    channel: state.sounds.channel,
+    slotIndex: state.sounds.slotIndex,
     slots: state.sounds.slots,
   };
 }
