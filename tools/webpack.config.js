@@ -50,7 +50,7 @@ const config = {
 
   output: {
     path: resolvePath(BUILD_DIR, 'public/assets'),
-    publicPath: '/assets/',
+    publicPath: isDebug ? '/assets/' : './assets/',
     pathinfo: isVerbose,
     filename: isDebug ? '[name].js' : '[name].[chunkhash:8].js',
     chunkFilename: isDebug

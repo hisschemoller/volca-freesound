@@ -11,12 +11,16 @@
 
 // The top-level (parent) route
 const routes = {
-  path: '',
+  path: __DEV__ ? '' : '',
 
   // Keep in mind, routes are evaluated in order
   children: [
     {
       path: '',
+      load: () => import(/* webpackChunkName: 'volca' */ './volca'),
+    },
+    {
+      path: '/volca-freesound',
       load: () => import(/* webpackChunkName: 'volca' */ './volca'),
     },
     {
