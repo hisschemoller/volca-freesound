@@ -24,11 +24,13 @@ import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Volca.css';
-import fetchRandomSound from '../../actions/fetchRandomSound.actions';
+import downloadReceipt from '../../actions/downloadReceipt.actions';
 import fetchSounds from '../../actions/fetchSounds.actions';
+import fetchRandomSound from '../../actions/fetchRandomSound.actions';
 import {
   clearAll,
   initialize,
+  pause,
   selectAll,
   setDurationMax,
   setRange,
@@ -42,13 +44,15 @@ let audioContext;
 
 class Volca extends React.Component {
   static propTypes = {
+    count: PropTypes.number.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    isPaused: PropTypes.bool.isRequired,
+    isStarted: PropTypes.bool.isRequired,
+    durationMax: PropTypes.number.isRequired,
+    position: PropTypes.number.isRequired,
     rangeFirst: PropTypes.number.isRequired,
     rangeLast: PropTypes.number.isRequired,
     slotCount: PropTypes.number.isRequired,
-    count: PropTypes.number.isRequired,
-    dispatch: PropTypes.func.isRequired,
-    durationMax: PropTypes.number.isRequired,
-    position: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
   };
 
@@ -76,6 +80,11 @@ class Volca extends React.Component {
   }
 
   render() {
+    let btnText = 'Start';
+    if (this.props.isStarted) {
+      btnText = this.props.isPaused ? 'Stopping...' : 'Stop';
+    }
+
     return (
       <div className={s.root}>
         <div className={s.container}>
@@ -92,11 +101,29 @@ class Volca extends React.Component {
               type="button"
               onClick={e => {
                 e.preventDefault();
-                this.props.dispatch(start());
-                this.props.dispatch(fetchRandomSound());
+                if (this.props.isStarted) {
+                  this.props.dispatch(pause());
+                } else {
+                  this.props.dispatch(start());
+                  this.props.dispatch(fetchRandomSound());
+                }
               }}
             >
-              Start
+              {btnText}
+            </button>
+          </div>
+          <div className={s.row}>
+            <span className={s.textline}>
+              File transfer has finished. Please download your receipt.
+            </span>
+            <button
+              type="button"
+              onClick={e => {
+                e.preventDefault();
+                this.props.dispatch(downloadReceipt());
+              }}
+            >
+              Download receipt (text file)
             </button>
           </div>
           <div className={s.row}>
@@ -190,12 +217,14 @@ class Volca extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    rangeFirst: state.sounds.rangeFirst,
-    rangeLast: state.sounds.rangeLast,
-    slotCount: state.sounds.slotCount,
     count: state.sounds.count,
     durationMax: state.sounds.durationMax,
+    isPaused: state.sounds.isPaused,
+    isStarted: state.sounds.isStarted,
+    rangeFirst: state.sounds.rangeFirst,
+    rangeLast: state.sounds.rangeLast,
     position: state.sounds.position,
+    slotCount: state.sounds.slotCount,
   };
 }
 

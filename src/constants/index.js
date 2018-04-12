@@ -2,6 +2,7 @@
 
 export const CLEAR_ALL = 'CLEAR_ALL';
 export const INITIALIZE = 'INITIALIZE';
+export const PAUSE = 'PAUSE';
 export const PLAY_END = 'PLAY_END';
 export const PLAY_PROGRESS = 'PLAY_PROGRESS';
 export const PLAY_START = 'PLAY_START';
@@ -21,4 +22,6 @@ export const SET_RANGE_FIRST = 'SET_RANGE_FIRST';
 export const SET_RANGE_LAST = 'SET_RANGE_LAST';
 export const SET_RUNTIME_VARIABLE = 'SET_RUNTIME_VARIABLE';
 export const START = 'START';
+export const STOP = 'STOP';
 export const TOGGLE_SLOT = 'TOGGLE_SLOT';
+export const TOGGLE_START = 'TOGGLE_START';

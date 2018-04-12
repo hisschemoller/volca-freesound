@@ -31,4 +31,7 @@
  .row {
    border-top: 1px solid #ccc;
  }
+ .textline {
+   display: block;
+ }
  

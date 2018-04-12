@@ -1,6 +1,7 @@
 import {
   CLEAR_ALL,
   INITIALIZE,
+  PAUSE,
   PLAY_END,
   PLAY_PROGRESS,
   PLAY_START,
@@ -13,28 +14,16 @@ import {
   SET_RANGE_FIRST,
   SET_RANGE_LAST,
   START,
+  STOP,
   TOGGLE_SLOT,
 } from '../constants';
-
-// function updateSlots(state, rangeFirst, rangeLast, activeIndex) {
-//   let value;
-//   return state.slots.reduce((accumulator, currentValue, currentIndex) => {
-//     if (currentIndex === activeIndex && state.status === 1) {
-//       value = 3;
-//     } else if (state.rangeFirst <= currentIndex && currentIndex <= rangeLast) {
-//       value = 1;
-//     } else {
-//       value = 0;
-//     }
-//     accumulator.push(value);
-//     return accumulator;
-//   }, []);
-// }
 
 const initialState = {
   count: 0,
   duration: 0,
   durationMax: 4,
+  isPaused: false,
+  isStarted: false,
   position: 0,
   rangeFirst: 0,
   rangeLast: 99,
@@ -42,7 +31,6 @@ const initialState = {
   slotIndex: 0,
   slots: [],
   sounds: { allIds: [], byId: {} },
-  status: 0, // 0=idle | 1=active
   totalDuration: 0,
 };
 
@@ -65,14 +53,12 @@ export default function sounds(state = initialState, action) {
           accumulator.push(index === state.slotIndex ? 2 : slot);
           return accumulator;
         }, []),
-        status: 0,
         totalDuration: state.totalDuration + state.duration,
       };
     case REQUEST_RANDOM_SOUND:
       return {
         ...state,
         slotIndex: state.slots.findIndex(slot => slot === 1),
-        status: 1,
       };
     case RECEIVE_RANDOM_SOUND:
       return {
@@ -84,12 +70,14 @@ export default function sounds(state = initialState, action) {
             ...state.sounds.byId,
             [action.sound.id]: {
               name: action.sound.name,
+              id: action.sound.id,
               license: action.sound.license,
               preview: action.sound.previews['preview-hq-mp3'],
               duration: action.sound.duration,
               type: action.sound.type,
               url: action.sound.url,
               username: action.sound.username,
+              slotIndex: state.slotIndex,
             },
           },
         },
@@ -166,7 +154,19 @@ export default function sounds(state = initialState, action) {
     case START:
       return {
         ...state,
+        isStarted: true,
         slotIndex: 0,
+      };
+    case STOP:
+      return {
+        ...state,
+        isPaused: false,
+        isStarted: false,
+      };
+    case PAUSE:
+      return {
+        ...state,
+        isPaused: true,
       };
     default:
       return state;

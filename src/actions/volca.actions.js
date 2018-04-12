@@ -1,18 +1,22 @@
 import {
   CLEAR_ALL,
-  SELECT_ALL,
   INITIALIZE,
+  PAUSE,
+  SELECT_ALL,
   SET_RANGE,
   SET_RANGE_FIRST,
   SET_RANGE_LAST,
   SET_DURATION_MAX,
   START,
+  STOP,
   TOGGLE_SLOT,
 } from '../constants';
 import { makeActionCreator } from './actionUtils';
 
 export const initialize = makeActionCreator(INITIALIZE);
 export const start = makeActionCreator(START);
+export const stop = makeActionCreator(STOP);
+export const pause = makeActionCreator(PAUSE);
 
 export const setRange = makeActionCreator(SET_RANGE);
 export const setRangeFirst = makeActionCreator(SET_RANGE_FIRST, 'value');
