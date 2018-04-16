@@ -5,7 +5,7 @@ export default function evaluateSounds() {
   return (dispatch, getState) => {
     const state = getState();
     if (
-      state.sounds.slots.findIndex(slot => slot === 1) !== -1 &&
+      state.sounds.slots.findIndex(slot => slot === 1 || slot === 3) !== -1 &&
       !state.sounds.isPaused
     ) {
       dispatch(fetchRandomSound());

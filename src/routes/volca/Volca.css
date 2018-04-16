@@ -14,6 +14,12 @@
    padding-left: 20px;
    padding-right: 20px;
  }
+
+ button {
+   background-color: #eee;
+   border: none;
+   color: #bbb;
+ }
  
  .container {
    margin: 0 auto;

@@ -11,7 +11,7 @@ const title = 'vf';
 function action() {
   return {
     title,
-    // chunks: ['volca'],
+    chunks: ['volca'],
     component: (
       <Layout>
         <Volca title={title} numSounds={0} />

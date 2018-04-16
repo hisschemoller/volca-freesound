@@ -98,7 +98,6 @@ class Volca extends React.Component {
             <progress max="1" value={this.props.position} />
             <span>{Math.round(this.props.position * 100)}%</span>
             <button
-              type="button"
               onClick={e => {
                 e.preventDefault();
                 if (this.props.isStarted) {
@@ -108,6 +107,7 @@ class Volca extends React.Component {
                   this.props.dispatch(fetchRandomSound());
                 }
               }}
+              type="button"
             >
               {btnText}
             </button>
@@ -117,11 +117,11 @@ class Volca extends React.Component {
               File transfer has finished. Please download your receipt.
             </span>
             <button
-              type="button"
               onClick={e => {
                 e.preventDefault();
                 this.props.dispatch(downloadReceipt());
               }}
+              type="button"
             >
               Download receipt (text file)
             </button>
@@ -130,11 +130,10 @@ class Volca extends React.Component {
             <label htmlFor="duration_max">
               <span>Max. duration</span>
               <input
-                type="number"
-                min="0"
-                max="none"
-                value={this.props.durationMax}
+                disabled={this.props.isStarted ? 'disabled' : ''}
                 id="duration_max"
+                max="none"
+                min="0"
                 onChange={e => {
                   e.preventDefault();
                   this.props.dispatch(setDurationMax(e.target.value));
@@ -146,6 +145,8 @@ class Volca extends React.Component {
                     }),
                   );
                 }}
+                type="number"
+                value={this.props.durationMax}
               />
             </label>
           </div>
@@ -153,57 +154,62 @@ class Volca extends React.Component {
             <label htmlFor="from">
               <span>From</span>
               <input
-                type="number"
-                min="0"
-                max={this.props.slotCount - 1}
-                value={this.props.rangeFirst}
+                disabled={this.props.isStarted ? 'disabled' : ''}
                 id="from"
+                max={this.props.slotCount - 1}
+                min="0"
                 onChange={e => {
                   e.preventDefault();
                   this.props.dispatch(setRangeFirst(e.target.value));
                 }}
+                type="number"
+                value={this.props.rangeFirst}
               />
             </label>
             <label htmlFor="to">
               <span>To</span>
               <input
-                type="number"
-                min="0"
-                max={this.props.slotCount - 1}
-                value={this.props.rangeLast}
+                disabled={this.props.isStarted ? 'disabled' : ''}
                 id="to"
+                max={this.props.slotCount - 1}
+                min="0"
                 onChange={e => {
                   e.preventDefault();
                   this.props.dispatch(setRangeLast(e.target.value));
                 }}
+                type="number"
+                value={this.props.rangeLast}
               />
             </label>
             <button
-              type="button"
+              disabled={this.props.isStarted ? 'disabled' : ''}
               onClick={e => {
                 e.preventDefault();
                 this.props.dispatch(setRange());
               }}
+              type="button"
             >
               Set range
             </button>
           </div>
           <div className={s.row}>
             <button
-              type="button"
+              disabled={this.props.isStarted ? 'disabled' : ''}
               onClick={e => {
                 e.preventDefault();
                 this.props.dispatch(clearAll());
               }}
+              type="button"
             >
               Clear All
             </button>
             <button
-              type="button"
+              disabled={this.props.isStarted ? 'disabled' : ''}
               onClick={e => {
                 e.preventDefault();
                 this.props.dispatch(selectAll());
               }}
+              type="button"
             >
               Select All
             </button>

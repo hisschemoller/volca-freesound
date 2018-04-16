@@ -8,11 +8,13 @@ import s from './Slots.css';
 
 class Slots extends React.Component {
   static propTypes = {
-    slotIndex: PropTypes.number.isRequired,
+    slotIndex: PropTypes.number,
     slots: PropTypes.arrayOf(PropTypes.number).isRequired,
   };
 
-  static defaultProps = {};
+  static defaultProps = {
+    slotIndex: null,
+  };
 
   render() {
     const { slotIndex, slots } = this.props;
@@ -21,7 +23,7 @@ class Slots extends React.Component {
         {slots.map((status, index) => (
           <Slot
             key={index.toString()}
-            status={index === slotIndex ? 3 : status}
+            status={index === slotIndex ? 4 : status}
             index={index}
           />
         ))}

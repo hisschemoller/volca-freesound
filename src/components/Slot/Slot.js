@@ -10,19 +10,21 @@ class Slot extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     index: PropTypes.number.isRequired,
+    isStarted: PropTypes.bool.isRequired,
     status: PropTypes.number.isRequired,
   };
 
   render() {
     return (
       <button
-        type="button"
         className={s.root}
         data-status={this.props.status}
+        disabled={this.props.isStarted ? 'disabled' : ''}
         onClick={e => {
           e.preventDefault();
           this.props.dispatch(toggleSlot(this.props.index));
         }}
+        type="button"
       >
         {this.props.index}
       </button>
@@ -30,8 +32,8 @@ class Slot extends React.Component {
   }
 }
 
-const mapStateToProps = () => ({
-  // slot: getItemByKey(ownProps.uniqueKey)
+const mapStateToProps = state => ({
+  isStarted: state.sounds.isStarted,
 });
 
 export default compose(withStyles(s), connect(mapStateToProps))(Slot);

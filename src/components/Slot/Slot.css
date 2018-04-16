@@ -19,10 +19,14 @@
   color: #aaa;
 }
 .root[data-status='2'] {
-  background: #999;
+  background: #aaa;
   color: #fff;
 }
 .root[data-status='3'] {
-  background: #333;
+  background: #666;
+  color: #ddd;
+}
+.root[data-status='4'] {
+  background: #000;
   color: #fff;
 }

@@ -1,3 +1,12 @@
+/**
+ * Slot values:
+ * 0 - empty
+ * 1 - empty, selected to load a sample
+ * 2 - sample was loaded in the slot
+ * 3 - sample loaded, selected to overwrite
+ * 4 - currently transferring sample
+ */
+
 import {
   CLEAR_ALL,
   INITIALIZE,
@@ -21,14 +30,14 @@ import {
 const initialState = {
   count: 0,
   duration: 0,
-  durationMax: 4,
+  durationMax: 1,
   isPaused: false,
   isStarted: false,
   position: 0,
   rangeFirst: 0,
   rangeLast: 99,
   slotCount: 100,
-  slotIndex: 0,
+  slotIndex: null,
   slots: [],
   sounds: { allIds: [], byId: {} },
   totalDuration: 0,
@@ -58,7 +67,7 @@ export default function sounds(state = initialState, action) {
     case REQUEST_RANDOM_SOUND:
       return {
         ...state,
-        slotIndex: state.slots.findIndex(slot => slot === 1),
+        slotIndex: state.slots.findIndex(slot => slot === 1 || slot === 3),
       };
     case RECEIVE_RANDOM_SOUND:
       return {
@@ -95,9 +104,9 @@ export default function sounds(state = initialState, action) {
           if (
             state.rangeFirst <= currentIndex &&
             currentIndex <= state.rangeLast &&
-            value === 0
+            (value === 0 || value === 2)
           ) {
-            value = 1;
+            value = value === 0 ? 1 : 3;
           }
           accumulator.push(value);
           return accumulator;
@@ -130,10 +139,21 @@ export default function sounds(state = initialState, action) {
         slots: state.slots.reduce((accumulator, currentValue, currentIndex) => {
           let value = state.slots[currentIndex];
           if (action.index === currentIndex) {
-            if (value === 0) {
-              value = 1;
-            } else if (value === 1) {
-              value = 0;
+            switch (value) {
+              case 0:
+                value = 1;
+                break;
+              case 1:
+                value = 0;
+                break;
+              case 2:
+                value = 3;
+                break;
+              case 3:
+                value = 2;
+                break;
+              default:
+                value = 0;
             }
           }
           accumulator.push(value);
@@ -155,13 +175,14 @@ export default function sounds(state = initialState, action) {
       return {
         ...state,
         isStarted: true,
-        slotIndex: 0,
+        slotIndex: null,
       };
     case STOP:
       return {
         ...state,
         isPaused: false,
         isStarted: false,
+        slotIndex: null,
       };
     case PAUSE:
       return {
