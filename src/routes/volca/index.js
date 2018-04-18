@@ -6,7 +6,7 @@ import React from 'react';
 import Layout from '../../components/Layout';
 import Volca from './Volca';
 
-const title = 'vf';
+const title = 'Transfer';
 
 function action() {
   return {
