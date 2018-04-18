@@ -7,37 +7,53 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
- @import '../../components/variables.css';
+@import '../../components/variables.css';
 
- .root {
-   color: #ccc;
-   padding-left: 20px;
-   padding-right: 20px;
- }
+.root {
+  color: #ccc;
+  padding-left: 20px;
+  padding-right: 20px;
+}
 
- button {
-   background-color: #eee;
-   border: none;
-   color: #bbb;
- }
- 
- .container {
-   margin: 0 auto;
-   padding: 0 0 40px;
-   max-width: var(--max-content-width);
- }
- 
- .title {
-   font-size: 1rem;
-   font-weight: normal;
- }
- .samplecount {
-   display: block;
- }
- .row {
-   border-top: 1px solid #ccc;
- }
- .textline {
-   display: block;
- }
- 
+button {
+  background-color: #eee;
+  border: none;
+  color: #bbb;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 0 40px;
+  max-width: var(--max-content-width);
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: normal;
+}
+.samplecount {
+  display: block;
+}
+.row {
+  border-top: 1px solid #ccc;
+}
+.textline {
+  display: block;
+}
+.receipt {
+  height: 0;
+    -webkit-transition: var(--show-height) var(--show-time) var(--show-type);
+       -moz-transition: var(--show-height) var(--show-time) var(--show-type);
+        -ms-transition: var(--show-height) var(--show-time) var(--show-type);
+         -o-transition: var(--show-height) var(--show-time) var(--show-type);
+            transition: var(--show-height) var(--show-time) var(--show-type);
+  overflow: hidden;
+}
+.receiptreveal {
+  height: 60px;
+    -webkit-transition: var(--show-height) var(--show-time) var(--show-type);
+       -moz-transition: var(--show-height) var(--show-time) var(--show-type);
+        -ms-transition: var(--show-height) var(--show-time) var(--show-type);
+         -o-transition: var(--show-height) var(--show-time) var(--show-type);
+            transition: var(--show-height) var(--show-time) var(--show-type);
+}

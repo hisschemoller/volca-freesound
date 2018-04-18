@@ -28,4 +28,12 @@
   --screen-sm-min: 768px;  /* Small screen / tablet */
   --screen-md-min: 992px;  /* Medium screen / desktop */
   --screen-lg-min: 1200px; /* Large screen / wide desktop */
+
+  /*
+   * Animation
+   * ======================================================================== */
+
+  --show-height: height;
+  --show-time: 0.3s;
+  --show-type: linear;
 }

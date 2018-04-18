@@ -52,6 +52,7 @@ class Volca extends React.Component {
     position: PropTypes.number.isRequired,
     rangeFirst: PropTypes.number.isRequired,
     rangeLast: PropTypes.number.isRequired,
+    showReceipt: PropTypes.bool.isRequired,
     slotCount: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
   };
@@ -112,7 +113,11 @@ class Volca extends React.Component {
               {btnText}
             </button>
           </div>
-          <div className={s.row}>
+          <div
+            className={
+              s.receipt + (this.props.showReceipt ? ` ${s.receiptreveal}` : '')
+            }
+          >
             <span className={s.textline}>
               File transfer has finished. Please download your receipt.
             </span>
@@ -231,6 +236,7 @@ function mapStateToProps(state) {
     rangeLast: state.sounds.rangeLast,
     position: state.sounds.position,
     slotCount: state.sounds.slotCount,
+    showReceipt: !!state.sounds.sounds.allIds.length && !state.sounds.isStarted,
   };
 }
 
