@@ -12,7 +12,7 @@ The [Volca Sample](http://www.korg.com/us/products/dj/volca_sample/) is a musica
 
 ### Freesound
 
-[www.freesound.org](http://https.freesound.org) is a collaborate audio database where anyone can upload audio samples and recordings and share them under under Creative Commons licenses. It's an initiative by the [Music Technology Group](https://www.upf.edu/web/mtg) of Universitat Pompeu Fabra in Barcelona. More information on their [about](https://freesound.org/help/about/) page. Freesound maintains an API to retrieve information and sounds from their database.
+[www.freesound.org](http://https.freesound.org) is a collaborative audio database where anyone can upload audio samples and recordings and share them under under Creative Commons licenses. It's an initiative by the [Music Technology Group](https://www.upf.edu/web/mtg) of Universitat Pompeu Fabra in Barcelona. More information on their [about](https://freesound.org/help/about/) page. Freesound maintains an API to retrieve information and sounds from their database.
 
 ## Quick start
 
