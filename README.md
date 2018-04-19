@@ -32,3 +32,15 @@ On the Volca Freesound page
 On the Volca Sample
 - The display shows the word 'data' to indicate it's receiving sample data.
 - The various LEDs on the interface pulsate while transferring.
+
+## User settings
+
+Content to follow...
+
+## Background information
+
+Content to follow...
+
+## Tips and problem solving
+
+Content to follow...
