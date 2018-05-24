@@ -1,14 +1,15 @@
 import React from 'react';
 import Layout from '../../components/Layout';
+import Page from '../../components/Page';
+import help from './help.md';
 
 function action() {
   return {
-    title: 'Help',
     chunks: ['help'],
+    title: help.title,
     component: (
       <Layout>
-        <p>help!</p>
-        <p>Dit is de help pagina met tekst, plaatjes en wellicht een video.</p>
+        <Page {...help} />
       </Layout>
     ),
   };
