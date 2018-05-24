@@ -4,17 +4,17 @@
 
 import React from 'react';
 import Layout from '../../components/Layout';
-import Volca from './Volca';
+import Main from '../../components/Main';
 
 const title = 'Transfer';
 
 function action() {
   return {
     title,
-    chunks: ['volca'],
+    chunks: ['main'],
     component: (
       <Layout>
-        <Volca title={title} numSounds={0} />
+        <Main title={title} numSounds={0} />
       </Layout>
     ),
   };

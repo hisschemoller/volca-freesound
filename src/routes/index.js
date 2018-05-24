@@ -17,11 +17,11 @@ const routes = {
   children: [
     {
       path: '',
-      load: () => import(/* webpackChunkName: 'volca' */ './volca'),
+      load: () => import(/* webpackChunkName: 'main' */ './main'),
     },
     {
-      path: '/transfer',
-      load: () => import(/* webpackChunkName: 'volca' */ './volca'),
+      path: '/main',
+      load: () => import(/* webpackChunkName: 'main' */ './main'),
     },
     {
       path: '/help',

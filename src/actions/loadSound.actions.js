@@ -1,7 +1,7 @@
 import { REQUEST_SOUND, RECEIVE_SOUND, REJECT_SOUND } from '../constants';
 import playSound from './playSound.actions';
 import { makeActionCreator } from './actionUtils';
-import { getAudioContext } from '../routes/volca/Volca';
+import { getAudioContext } from '../components/Main';
 
 const requestSound = makeActionCreator(REQUEST_SOUND, 'query');
 const receiveSound = makeActionCreator(RECEIVE_SOUND, 'json');

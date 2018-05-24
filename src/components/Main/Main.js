@@ -23,32 +23,29 @@ import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './Volca.css';
+import s from './Main.css';
 import downloadReceipt from '../../actions/downloadReceipt.actions';
-import fetchSounds from '../../actions/fetchSounds.actions';
 import fetchRandomSound from '../../actions/fetchRandomSound.actions';
 import {
   clearAll,
   initialize,
   pause,
   selectAll,
-  setDurationMax,
   setRange,
   setRangeFirst,
   setRangeLast,
   start,
 } from '../../actions/volca.actions';
+import Freesound from '../../components/Freesound';
 import Slots from '../../components/Slots';
 
 let audioContext;
 
-class Volca extends React.Component {
+class Main extends React.Component {
   static propTypes = {
-    count: PropTypes.number.isRequired,
     dispatch: PropTypes.func.isRequired,
     isPaused: PropTypes.bool.isRequired,
     isStarted: PropTypes.bool.isRequired,
-    durationMax: PropTypes.number.isRequired,
     position: PropTypes.number.isRequired,
     rangeFirst: PropTypes.number.isRequired,
     rangeLast: PropTypes.number.isRequired,
@@ -62,18 +59,10 @@ class Volca extends React.Component {
   /**
    * When the component mounts:
    * Create an AudioContext to play the encoded samples.
-   * Get the total amount of available sounds from Freesound.
    */
   componentDidMount() {
     audioContext = new (window.AudioContext || window.webkitAudioContext)();
     this.props.dispatch(initialize());
-    this.props.dispatch(
-      fetchSounds({
-        query: '',
-        page: 1,
-        pageSize: 1,
-      }),
-    );
   }
 
   componentWillUnmount() {
@@ -90,11 +79,7 @@ class Volca extends React.Component {
       <div className={s.root}>
         <div className={s.container}>
           <h1 className={s.title}>{this.props.title}</h1>
-          <span className={s.samplecount}>
-            {this.props.count > 0
-              ? `${this.props.count} samples found`
-              : `No samples available.`}
-          </span>
+          <Freesound />
           <div className={s.row}>
             <progress max="1" value={this.props.position} />
             <span>{Math.round(this.props.position * 100)}%</span>
@@ -130,30 +115,6 @@ class Volca extends React.Component {
             >
               Download receipt (text file)
             </button>
-          </div>
-          <div className={s.row}>
-            <label htmlFor="duration_max">
-              <span>Max. duration</span>
-              <input
-                disabled={this.props.isStarted ? 'disabled' : ''}
-                id="duration_max"
-                max="none"
-                min="0"
-                onChange={e => {
-                  e.preventDefault();
-                  this.props.dispatch(setDurationMax(e.target.value));
-                  this.props.dispatch(
-                    fetchSounds({
-                      query: '',
-                      page: 1,
-                      pageSize: 1,
-                    }),
-                  );
-                }}
-                type="number"
-                value={this.props.durationMax}
-              />
-            </label>
           </div>
           <div className={s.row}>
             <label htmlFor="from">
@@ -228,8 +189,6 @@ class Volca extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    count: state.sounds.count,
-    durationMax: state.sounds.durationMax,
     isPaused: state.sounds.isPaused,
     isStarted: state.sounds.isStarted,
     rangeFirst: state.sounds.rangeFirst,
@@ -240,7 +199,7 @@ function mapStateToProps(state) {
   };
 }
 
-export default compose(withStyles(s), connect(mapStateToProps))(Volca);
+export default compose(withStyles(s), connect(mapStateToProps))(Main);
 
 export function getAudioContext() {
   return audioContext;
