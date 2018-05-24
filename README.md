@@ -30,17 +30,78 @@ On the Volca Freesound page
 - The progress bar shows the percentage of transfer that is done.
 
 On the Volca Sample
-- The display shows the word 'data' to indicate it's receiving sample data.
+- The display switches between the word 'data' and the number of the slot to indicate it's receiving sample data.
 - The various LEDs on the interface pulsate while transferring.
 
-## User settings
+## Overview
 
-Content to follow...
+The app fills selected sample slots on the Volca Sample with random sounds from the Freesound database.
 
-## Background information
+#### Freesound sample licences and ownership
 
-Content to follow...
+Audio files on Freesound can be of any type, WAV, FLAC, OGG etc. The files can only be accessed by registered users. Each sound however has an MP3 preview file that is free to download. It's these MP3 files that are used by this app. So a Freesound account is not necessary. 
+
+To use the audio in published or commercial projects however, the original high quality files might be desirable. It's also important to know that each sound can have its own licence type, with its own restrictions on the use of the sound.
+
+So, to be able to store the information about the downloaded samples, the app lets you downloaded a receipt after transfer has finished. The receipt is a text file containing an overview of all slots and the samples that have been transferred to them, with filename, uploader's name, licence type, link to the sounds page on freesound.org and other information.
+
+If you use or appreciate a sound, it always nice torate the sound or let the uploader know in a comment on the Freesound site.
+
+#### Usage
+
+When the app starts up it's set by default to overwrite all 100 sample slots on the Volca Sample. You might want to only select specific slots, so samples that are already on the machine and that you want to keep are not overwritten.
+
+You might also want to set a maximum sample duration, so more samples fit on the machine, or else allow for longer samples. All these settings are described below in the next section.
+
+Press Start to start file download and transfer.
+
+The app will download MP3 files, convert them and tranfer them to the Volca Sample. On the slots grid you will see the slot currently receiving a sample in red. All the slots that have finished will be green.
+
+You can interrupt the transfer by pressing Stop. The current transfer will continue until finished and then further transfer is halted.
+
+After file transfer is finished the button will appear that lets you download the receipt text file with all the transferred samples' details.
+
+
+
+## Sample and slot settings
+
+Before starting transfer you might want to adjust some settimgs.
+
+#### Maximum duration
+
+The maximum length of samples can be set here. In seconds. The Volca Sample has 4MB of memory to store samples, which is not much. The shorter the duration, the more of the 100 sample slots will likely be filled.
+
+When you change the maximum duration, the amount of available samples will be updated.
+
+#### Slots grid
+
+The grid represents the 100 sample slots available on the Volca Sample. It lets you select individual slots in which random samples will be loaded. Click a slot to select or deselect it. When transfer starts only the selcted slots will be overwritten with new samples.
+
+#### Clear or select all slots
+
+These buttons will unselect or select all the slots in the grid in one click.
+
+#### Range selection
+
+A range within the 100 sample slots can be selected to receive new samples. Set the lowest and the highest slot number and click the Set Range button. The selected or unselected state of all slots outside the range will remain unchanged.
 
 ## Tips and problem solving
 
-Content to follow...
+#### Audio volume and optimal transfer
+
+Transfer works best with a clear and loud audio signal. Switch off any audio effect or equalizer settings on your computer or soundcard, and set the volume level close to maximum.
+
+Use new batteries or a power adapter on the Volca Sample.
+
+#### Error CRC
+
+
+#### Error DCOD
+
+
+
+## About
+
+To transfer samples Volca Freesound uses [Syro.js](https://github.com/ptigas/syro.js), a Javascript version of the [Korg Syro SDK](http://korginc.github.io/volcasample/) that was made by [Panagiotis Tigas](http://ptigas.com/).
+
+The app itself is built on [Kriasoft](https://www.kriasoft.com/)'s [React Starter Kit](https://github.com/kriasoft/react-starter-kit). It's my first React and Redux project in fact, that I built to get to know and use the framework and its tools.
