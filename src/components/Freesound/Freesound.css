@@ -1,0 +1,8 @@
+@import '../../components/variables.css';
+
+.row {
+  border-top: 1px solid #ccc;
+}
+.samplecount {
+  display: block;
+}
