@@ -14,13 +14,6 @@
   padding-left: 20px;
   padding-right: 20px;
 }
-
-button {
-  background-color: #eee;
-  border: none;
-  color: #bbb;
-}
-
 .container {
   margin: 0 auto;
   padding: 0 0 40px;
@@ -33,24 +26,4 @@ button {
 }
 .row {
   border-top: 1px solid #ccc;
-}
-.textline {
-  display: block;
-}
-.receipt {
-  height: 0;
-    -webkit-transition: var(--show-height) var(--show-time) var(--show-type);
-       -moz-transition: var(--show-height) var(--show-time) var(--show-type);
-        -ms-transition: var(--show-height) var(--show-time) var(--show-type);
-         -o-transition: var(--show-height) var(--show-time) var(--show-type);
-            transition: var(--show-height) var(--show-time) var(--show-type);
-  overflow: hidden;
-}
-.receiptreveal {
-  height: 60px;
-    -webkit-transition: var(--show-height) var(--show-time) var(--show-type);
-       -moz-transition: var(--show-height) var(--show-time) var(--show-type);
-        -ms-transition: var(--show-height) var(--show-time) var(--show-type);
-         -o-transition: var(--show-height) var(--show-time) var(--show-type);
-            transition: var(--show-height) var(--show-time) var(--show-type);
 }
