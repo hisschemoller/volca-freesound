@@ -1,0 +1,30 @@
+@import '../../components/variables.css';
+
+button {
+  background-color: #eee;
+  border: none;
+  color: #bbb;
+}
+.receipt {
+  height: 0;
+    -webkit-transition: var(--show-height) var(--show-time) var(--show-type);
+       -moz-transition: var(--show-height) var(--show-time) var(--show-type);
+        -ms-transition: var(--show-height) var(--show-time) var(--show-type);
+         -o-transition: var(--show-height) var(--show-time) var(--show-type);
+            transition: var(--show-height) var(--show-time) var(--show-type);
+  overflow: hidden;
+}
+.receiptreveal {
+  height: 60px;
+    -webkit-transition: var(--show-height) var(--show-time) var(--show-type);
+       -moz-transition: var(--show-height) var(--show-time) var(--show-type);
+        -ms-transition: var(--show-height) var(--show-time) var(--show-type);
+         -o-transition: var(--show-height) var(--show-time) var(--show-type);
+            transition: var(--show-height) var(--show-time) var(--show-type);
+}
+.row {
+  border-top: 1px solid #ccc;
+}
+.textline {
+  display: block;
+}
