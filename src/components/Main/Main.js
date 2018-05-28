@@ -58,10 +58,16 @@ class Main extends React.Component {
       <div className={s.root}>
         <div className={s.container}>
           <h1 className={s.title}>{this.props.title}</h1>
-          <Freesound />
-          <Volca />
-          <Slots />
-          <Transfer />
+          <div className={s.grid}>
+            <div className={s.grid__unit}>
+              <Freesound />
+              <Transfer />
+            </div>
+            <div className={s.grid__unit}>
+              <Volca />
+              <Slots />
+            </div>
+          </div>
         </div>
       </div>
     );
