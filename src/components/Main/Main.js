@@ -28,6 +28,7 @@ import { initialize } from '../../actions/volca.actions';
 import Freesound from '../../components/Freesound';
 import Section from '../../components/Section';
 import Slots from '../../components/Slots';
+import Sound from '../../components/Sound';
 import Transfer from '../../components/Transfer';
 import Volca from '../../components/Volca';
 
@@ -59,15 +60,18 @@ class Main extends React.Component {
       <div className={s.root}>
         <div className={s.container}>
           <div className={s.grid}>
-            <div className={s.grid__unit}>
+            <div className={s.grid__column}>
               <Section title="Freesound settings">
                 <Freesound />
+              </Section>
+              <Section title="Sound settings">
+                <Sound />
               </Section>
               <Section title="File transfer">
                 <Transfer />
               </Section>
             </div>
-            <div className={s.grid__unit}>
+            <div className={s.grid__column}>
               <Section title="Volca sample slot settings">
                 <Volca />
                 <Slots />
