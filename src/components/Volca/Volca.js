@@ -95,6 +95,7 @@ class Volca extends React.Component {
 
 function mapStateToProps(state) {
   return {
+    isStarted: state.sounds.isStarted,
     rangeFirst: state.sounds.rangeFirst,
     rangeLast: state.sounds.rangeLast,
     slotCount: state.sounds.slotCount,

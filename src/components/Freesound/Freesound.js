@@ -34,11 +34,6 @@ class Freesound extends React.Component {
   render() {
     return (
       <div>
-        <span className={s.samplecount}>
-          {this.props.count > 0
-            ? `${this.props.count} samples found`
-            : `No samples available.`}
-        </span>
         <div className={s.row}>
           <label htmlFor="duration_max">
             <span>Max. duration</span>
@@ -62,6 +57,13 @@ class Freesound extends React.Component {
               value={this.props.durationMax}
             />
           </label>
+        </div>
+        <div className={s.row}>
+          <span className={s.samplecount}>
+            {this.props.count > 0
+              ? `${this.props.count} samples found`
+              : `No samples available.`}
+          </span>
         </div>
       </div>
     );
