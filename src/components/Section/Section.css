@@ -1,0 +1,9 @@
+@import '../../components/variables.css';
+
+.root {
+  margin-bottom: 10px;
+}
+.header {
+  font-size: 20px;
+  height: 40px;
+}
