@@ -23,21 +23,20 @@ import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './Main.css';
 import { initialize } from '../../actions/volca.actions';
-import Freesound from '../../components/Freesound';
-import Section from '../../components/Section';
-import Slots from '../../components/Slots';
-import Sound from '../../components/Sound';
-import Transfer from '../../components/Transfer';
-import Volca from '../../components/Volca';
+import s from './Main.css';
+import Freesound from '../Freesound';
+import Section from '../Section';
+import Slots from '../Slots';
+import Sound from '../Sound';
+import Transfer from '../Transfer';
+import Volca from '../Volca';
 
 let audioContext;
 
 class Main extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    title: PropTypes.string.isRequired,
   };
 
   static defaultProps = {};
