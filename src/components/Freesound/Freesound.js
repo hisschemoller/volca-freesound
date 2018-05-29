@@ -6,6 +6,7 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Freesound.css';
 import fetchSounds from '../../actions/fetchSounds.actions';
 import { setDurationMax } from '../../actions/volca.actions';
+import Row from '../Row';
 
 class Freesound extends React.Component {
   static propTypes = {
@@ -34,7 +35,7 @@ class Freesound extends React.Component {
   render() {
     return (
       <div>
-        <div className={s.row}>
+        <Row>
           <label htmlFor="duration_max">
             <span>Max. duration</span>
             <input
@@ -57,14 +58,14 @@ class Freesound extends React.Component {
               value={this.props.durationMax}
             />
           </label>
-        </div>
-        <div className={s.row}>
+        </Row>
+        <Row>
           <span className={s.samplecount}>
             {this.props.count > 0
               ? `${this.props.count} samples found`
               : `No samples available.`}
           </span>
-        </div>
+        </Row>
       </div>
     );
   }

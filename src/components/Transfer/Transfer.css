@@ -22,9 +22,6 @@ button {
          -o-transition: var(--show-height) var(--show-time) var(--show-type);
             transition: var(--show-height) var(--show-time) var(--show-type);
 }
-.row {
-  border-top: 1px solid #ccc;
-}
 .textline {
   display: block;
 }

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './Volca.css';
 import {
   clearAll,
   selectAll,
@@ -11,6 +10,8 @@ import {
   setRangeFirst,
   setRangeLast,
 } from '../../actions/volca.actions';
+import s from './Volca.css';
+import Row from '../Row';
 
 class Volca extends React.Component {
   static propTypes = {
@@ -24,7 +25,7 @@ class Volca extends React.Component {
   render() {
     return (
       <div>
-        <div className={s.row}>
+        <Row>
           <label htmlFor="from">
             <span>From</span>
             <input
@@ -65,8 +66,8 @@ class Volca extends React.Component {
           >
             Set range
           </button>
-        </div>
-        <div className={s.row}>
+        </Row>
+        <Row>
           <button
             disabled={this.props.isStarted ? 'disabled' : ''}
             onClick={e => {
@@ -87,7 +88,7 @@ class Volca extends React.Component {
           >
             Select All
           </button>
-        </div>
+        </Row>
       </div>
     );
   }
