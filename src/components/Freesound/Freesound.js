@@ -6,6 +6,7 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Freesound.css';
 import fetchSounds from '../../actions/fetchSounds.actions';
 import { setDurationMax } from '../../actions/volca.actions';
+import FormControl from '../FormControl';
 import Row from '../Row';
 
 class Freesound extends React.Component {
@@ -13,7 +14,6 @@ class Freesound extends React.Component {
     count: PropTypes.number.isRequired,
     dispatch: PropTypes.func.isRequired,
     durationMax: PropTypes.number.isRequired,
-    isStarted: PropTypes.bool.isRequired,
   };
 
   static defaultProps = {};
@@ -33,37 +33,34 @@ class Freesound extends React.Component {
   }
 
   render() {
+    const { count, dispatch, durationMax } = this.props;
+
     return (
       <div>
         <Row>
-          <label htmlFor="duration_max">
-            <span>Max. duration</span>
-            <input
-              disabled={this.props.isStarted ? 'disabled' : ''}
-              id="duration_max"
-              max="none"
-              min="0"
-              onChange={e => {
-                e.preventDefault();
-                this.props.dispatch(setDurationMax(e.target.value));
-                this.props.dispatch(
-                  fetchSounds({
-                    query: '',
-                    page: 1,
-                    pageSize: 1,
-                  }),
-                );
-              }}
-              type="number"
-              value={this.props.durationMax}
-            />
-          </label>
+          <FormControl
+            id="duration_max"
+            label="Max. duration"
+            max="none"
+            min="0"
+            onChange={e => {
+              e.preventDefault();
+              dispatch(setDurationMax(e.target.value));
+              dispatch(
+                fetchSounds({
+                  query: '',
+                  page: 1,
+                  pageSize: 1,
+                }),
+              );
+            }}
+            type="number"
+            value={durationMax}
+          />
         </Row>
         <Row>
           <span className={s.samplecount}>
-            {this.props.count > 0
-              ? `${this.props.count} samples found`
-              : `No samples available.`}
+            {count > 0 ? `${count} samples found` : `No samples available.`}
           </span>
         </Row>
       </div>
@@ -75,7 +72,6 @@ function mapStateToProps(state) {
   return {
     count: state.sounds.count,
     durationMax: state.sounds.durationMax,
-    isStarted: state.sounds.isStarted,
   };
 }
 

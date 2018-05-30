@@ -1,0 +1,6 @@
+{
+  "name": "FormControl",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./FormControl.js"
+}

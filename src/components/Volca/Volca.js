@@ -11,6 +11,7 @@ import {
   setRangeLast,
 } from '../../actions/volca.actions';
 import s from './Volca.css';
+import FormControl from '../FormControl';
 import Row from '../Row';
 
 class Volca extends React.Component {
@@ -23,44 +24,45 @@ class Volca extends React.Component {
   };
 
   render() {
+    const {
+      dispatch,
+      isStarted,
+      rangeFirst,
+      rangeLast,
+      slotCount,
+    } = this.props;
+
     return (
       <div>
         <Row>
-          <label htmlFor="from">
-            <span>From</span>
-            <input
-              disabled={this.props.isStarted ? 'disabled' : ''}
-              id="from"
-              max={this.props.slotCount - 1}
-              min="0"
-              onChange={e => {
-                e.preventDefault();
-                this.props.dispatch(setRangeFirst(e.target.value));
-              }}
-              type="number"
-              value={this.props.rangeFirst}
-            />
-          </label>
-          <label htmlFor="to">
-            <span>To</span>
-            <input
-              disabled={this.props.isStarted ? 'disabled' : ''}
-              id="to"
-              max={this.props.slotCount - 1}
-              min="0"
-              onChange={e => {
-                e.preventDefault();
-                this.props.dispatch(setRangeLast(e.target.value));
-              }}
-              type="number"
-              value={this.props.rangeLast}
-            />
-          </label>
+          <FormControl
+            id="from"
+            max={slotCount - 1}
+            min="0"
+            onChange={e => {
+              e.preventDefault();
+              dispatch(setRangeFirst(e.target.value));
+            }}
+            type="number"
+            value={rangeFirst}
+          />
+          <FormControl
+            disabled={isStarted ? 'disabled' : ''}
+            id="to"
+            max={slotCount - 1}
+            min="0"
+            onChange={e => {
+              e.preventDefault();
+              dispatch(setRangeLast(e.target.value));
+            }}
+            type="number"
+            value={rangeLast}
+          />
           <button
-            disabled={this.props.isStarted ? 'disabled' : ''}
+            disabled={isStarted ? 'disabled' : ''}
             onClick={e => {
               e.preventDefault();
-              this.props.dispatch(setRange());
+              dispatch(setRange());
             }}
             type="button"
           >
@@ -69,20 +71,20 @@ class Volca extends React.Component {
         </Row>
         <Row>
           <button
-            disabled={this.props.isStarted ? 'disabled' : ''}
+            disabled={isStarted ? 'disabled' : ''}
             onClick={e => {
               e.preventDefault();
-              this.props.dispatch(clearAll());
+              dispatch(clearAll());
             }}
             type="button"
           >
             Clear All
           </button>
           <button
-            disabled={this.props.isStarted ? 'disabled' : ''}
+            disabled={isStarted ? 'disabled' : ''}
             onClick={e => {
               e.preventDefault();
-              this.props.dispatch(selectAll());
+              dispatch(selectAll());
             }}
             type="button"
           >

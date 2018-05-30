@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose';
-import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Sound.css';
+import FormControl from '../FormControl';
 import Row from '../Row';
 
 class Sound extends React.Component {
@@ -13,16 +13,10 @@ class Sound extends React.Component {
     return (
       <div>
         <Row>
-          <label htmlFor="normalize">
-            Normalize
-            <input id="normalize" type="checkbox" />
-          </label>
+          <FormControl id="normalize" label="Normalize" type="checkbox" />
         </Row>
         <Row>
-          <label htmlFor="doubleSpeed">
-            Double speed
-            <input id="doubleSpeed" type="checkbox" />
-          </label>
+          <FormControl id="doubleSpeed" label="Double speed" type="checkbox" />
         </Row>
       </div>
     );
