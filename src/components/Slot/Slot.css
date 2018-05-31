@@ -1,32 +1,45 @@
 @import '../variables.css';
 
 .root {
-  border: 1px solid #ccc;
-  font-size: 9px;
-  height: 12px;
-  margin: 1px;
-  outline: none;
-  padding: 0;
-  text-align: center;
-  width: 12px;
+  flex-basis: 10%;
+  height: 0;
+  padding-bottom: 7%;
+  position: relative;
 }
-.root[data-status='0'] {
+.button {
+  border: 1px solid #ccc;
+  bottom: 1px;
+  cursor: pointer;
+  font-size: 9px;
+  left: 1px;
+  outline: none;
+  position: absolute;
+  right: 1px;
+  text-align: center;
+  top: 1px;
+}
+.button[data-status='0'] {
   background: #fff;
   color: #ccc;
 }
-.root[data-status='1'] {
+.button[data-status='1'] {
   background: #eee;
   color: #aaa;
 }
-.root[data-status='2'] {
+.button[data-status='2'] {
   background: #aaa;
   color: #fff;
 }
-.root[data-status='3'] {
+.button[data-status='3'] {
   background: #666;
   color: #ddd;
 }
-.root[data-status='4'] {
+.button[data-status='4'] {
   background: #000;
   color: #fff;
+}
+.label {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%); 
 }

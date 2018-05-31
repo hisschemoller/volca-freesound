@@ -15,19 +15,25 @@ class Slot extends React.Component {
   };
 
   render() {
+    const { dispatch, index, isStarted, status } = this.props;
+
     return (
-      <button
-        className={s.root}
-        data-status={this.props.status}
-        disabled={this.props.isStarted ? 'disabled' : ''}
-        onClick={e => {
-          e.preventDefault();
-          this.props.dispatch(toggleSlot(this.props.index));
-        }}
-        type="button"
-      >
-        {this.props.index}
-      </button>
+      <div className={s.root}>
+        <div
+          className={s.button}
+          data-status={status}
+          disabled={isStarted ? 'disabled' : ''}
+          onClick={e => {
+            e.preventDefault();
+            dispatch(toggleSlot(index));
+          }}
+          onKeyUp={() => null}
+          role="button"
+          tabIndex={index}
+        >
+          <div className={s.label}>{index}</div>
+        </div>
+      </div>
     );
   }
 }
