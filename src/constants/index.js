@@ -23,5 +23,7 @@ export const SET_RANGE_LAST = 'SET_RANGE_LAST';
 export const SET_RUNTIME_VARIABLE = 'SET_RUNTIME_VARIABLE';
 export const START = 'START';
 export const STOP = 'STOP';
+export const TOGGLE_DOUBLE_SPEED = 'TOGGLE_DOUBLE_SPEED';
+export const TOGGLE_NORMALIZE = 'TOGGLE_NORMALIZE';
 export const TOGGLE_SLOT = 'TOGGLE_SLOT';
 export const TOGGLE_START = 'TOGGLE_START';

@@ -24,6 +24,8 @@ import {
   SET_RANGE_LAST,
   START,
   STOP,
+  TOGGLE_DOUBLE_SPEED,
+  TOGGLE_NORMALIZE,
   TOGGLE_SLOT,
 } from '../constants';
 
@@ -31,6 +33,8 @@ const initialState = {
   count: 0,
   duration: 0,
   durationMax: 1,
+  isDoubleSpeed: false,
+  isNormalize: false,
   isPaused: false,
   isStarted: false,
   position: 0,
@@ -188,6 +192,16 @@ export default function sounds(state = initialState, action) {
       return {
         ...state,
         isPaused: true,
+      };
+    case TOGGLE_DOUBLE_SPEED:
+      return {
+        ...state,
+        isDoubleSpeed: !state.isDoubleSpeed,
+      };
+    case TOGGLE_NORMALIZE:
+      return {
+        ...state,
+        isNormalize: !state.isNormalize,
       };
     default:
       return state;

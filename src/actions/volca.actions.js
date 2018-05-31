@@ -9,6 +9,8 @@ import {
   SET_DURATION_MAX,
   START,
   STOP,
+  TOGGLE_DOUBLE_SPEED,
+  TOGGLE_NORMALIZE,
   TOGGLE_SLOT,
 } from '../constants';
 import { makeActionCreator } from './actionUtils';
@@ -27,3 +29,6 @@ export const toggleSlot = makeActionCreator(TOGGLE_SLOT, 'index');
 
 export const clearAll = makeActionCreator(CLEAR_ALL);
 export const selectAll = makeActionCreator(SELECT_ALL);
+
+export const toggleDoubleSpeed = makeActionCreator(TOGGLE_DOUBLE_SPEED);
+export const toggleNormalize = makeActionCreator(TOGGLE_NORMALIZE);
