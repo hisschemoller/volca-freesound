@@ -1,6 +1,12 @@
 import fetchRandomSound from './fetchRandomSound.actions';
 import { stop } from './volca.actions';
 
+/**
+ * Find the first Volca Sample slot that
+ * has status === 1 (selected empty slot) or
+ * has status === 3 (selected slot to overwrite earlier loaded sample) and
+ * transfer hasn't been paused.
+ */
 export default function evaluateSounds() {
   return (dispatch, getState) => {
     const state = getState();

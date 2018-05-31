@@ -1,5 +1,4 @@
 import { REQUEST_SOUNDS, RECEIVE_SOUNDS, REJECT_SOUNDS } from '../constants';
-import fetchRandomSound from './fetchRandomSound.actions';
 import { makeActionCreator, api } from './actionUtils';
 
 export const requestSounds = makeActionCreator(REQUEST_SOUNDS, 'query');
