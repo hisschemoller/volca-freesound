@@ -90,6 +90,73 @@ function bufferToWav(samples, numChannels, sampleRate) {
 }
 
 /**
+ * Normalize audio to maximum possible amplitude.
+ * @param {Object} audioBuffer AudioBuffer object.
+ */
+function normalize(audioBuffer) {
+  // find the amplitude maximum
+  let maxPos = -1;
+  let maxNeg = 1;
+  const bufferLength = audioBuffer.length;
+  for (
+    let channelIndex = 0;
+    channelIndex < audioBuffer.numberOfChannels;
+    channelIndex += 1
+  ) {
+    const audioFloat32Array = audioBuffer.getChannelData(channelIndex);
+
+    for (let i = 0; i < bufferLength; i += 1) {
+      if (audioFloat32Array[i] > maxPos) maxPos = audioFloat32Array[i];
+      if (audioFloat32Array[i] < maxNeg) maxNeg = audioFloat32Array[i];
+    }
+  }
+  const max = Math.max(Math.abs(maxPos), Math.abs(maxNeg));
+  const amp = Math.max(1 / max, 1);
+  // amp values
+  for (
+    let channelIndex = 0;
+    channelIndex < audioBuffer.numberOfChannels;
+    channelIndex += 1
+  ) {
+    const audioFloat32Array = audioBuffer.getChannelData(channelIndex);
+    for (let i = 0; i < bufferLength; i += 1) {
+      audioFloat32Array[i] = Math.max(
+        -1,
+        Math.min(audioFloat32Array[i] * amp, 1),
+      );
+    }
+  }
+  return audioBuffer;
+}
+
+/**
+ * Double the speed of the sample.
+ * @param {Object} audioBuffer AudioBuffer object.
+ * @return {Object} audioBuffer New half length double speed audioBuffer.
+ */
+function doubleSpeed(audioBuffer) {
+  const newAudioBuffer = new AudioBuffer(
+    Math.floor(audioBuffer.length / 2),
+    audioBuffer.numberOfChannels,
+    audioBuffer.sampleRate,
+  );
+  const bufferLength = newAudioBuffer.length;
+  for (
+    let channelIndex = 0;
+    channelIndex < audioBuffer.numberOfChannels;
+    channelIndex += 1
+  ) {
+    const oldAudioFloat32Array = audioBuffer.getChannelData(channelIndex);
+    const newAudioFloat32Array = newAudioBuffer.getChannelData(channelIndex);
+    for (let i = 0; i < bufferLength; i += 1) {
+      const oldArrayIndex = Math.min(i * 2, audioBuffer.length - 1);
+      newAudioFloat32Array[i] = oldAudioFloat32Array[oldArrayIndex];
+    }
+  }
+  return newAudioBuffer;
+}
+
+/**
  * Load an MP3 audio file from the provided URL,
  * convert the loaded audio to a Wav file formatted Blob,
  * convert that to a Syro type audio file
@@ -104,12 +171,26 @@ export default function loadSound(url) {
         response.arrayBuffer().then(arrayBuffer => {
           const audioContext = getAudioContext();
           audioContext.decodeAudioData(arrayBuffer).then(audioBuffer => {
-            const wavBlob = bufferToWav(
-              audioBuffer,
-              audioBuffer.numberOfChannels,
-              audioBuffer.sampleRate,
-            );
             const state = getState();
+
+            // normalize the sample
+            let audioBuffer2 = audioBuffer;
+            if (state.isNormalize) {
+              audioBuffer2 = normalize(audioBuffer);
+            }
+
+            // double speed sample
+            let audioBuffer3 = audioBuffer2;
+            if (state.isDoubleSpeed) {
+              audioBuffer3 = doubleSpeed(audioBuffer2);
+            }
+
+            const wavBlob = bufferToWav(
+              audioBuffer3,
+              audioBuffer3.numberOfChannels,
+              audioBuffer3.sampleRate,
+            );
+
             window.Syrialize(wavBlob, state.sounds.slotIndex, syroBlob => {
               const fileReader = new FileReader();
               fileReader.onload = () => {
