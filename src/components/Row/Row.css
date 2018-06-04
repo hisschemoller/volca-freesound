@@ -1,10 +1,13 @@
 @import '../../components/variables.css';
 
 .root {
-  border-top: 1px solid var(--grey1);
+  border-bottom: 1px solid var(--grey1);
+  border-left: 1px solid var(--grey1);
+  border-right: 1px solid var(--grey1);
   display: flex;
   height: 40px;
+  line-height: 40px;
+  padding: 0 10px;
 }
 .root:last-of-type {
-  border-bottom: 1px solid var(--grey1);
 }

@@ -1,7 +1,13 @@
 @import '../variables.css';
 
 .root {
+  background-color: var(--grey1);
+  margin-top: 10px;
+  padding: 10px 0;
+  width: 100%;
+}
+.slots {
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
+  margin: 0 10px;
 }

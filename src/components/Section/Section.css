@@ -4,6 +4,13 @@
   margin-bottom: 10px;
 }
 .header {
-  font-size: 20px;
-  height: 40px;
+  background-color: var(--grey1);
+  border: 1px solid var(--grey1);
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: normal;
+  height: 30px;
+  line-height: 30px;
+  margin: 0;
+  padding-left: 10px;
 }

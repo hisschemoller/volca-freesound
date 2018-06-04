@@ -20,13 +20,15 @@ class Slots extends React.Component {
     const { slotIndex, slots } = this.props;
     return (
       <div className={s.root}>
-        {slots.map((status, index) => (
-          <Slot
-            key={index.toString()}
-            status={index === slotIndex ? 4 : status}
-            index={index}
-          />
-        ))}
+        <div className={s.slots}>
+          {slots.map((status, index) => (
+            <Slot
+              key={index.toString()}
+              status={index === slotIndex ? 4 : status}
+              index={index}
+            />
+          ))}
+        </div>
       </div>
     );
   }
