@@ -10,30 +10,20 @@
 @import '../variables.css';
 
 .root {
-  background: #fff;
-  color: #ccc;
 }
 
 .container {
-  margin: 0 auto;
-  padding: 20px 15px;
   max-width: var(--max-content-width);
-  text-align: left;
 }
 
 .text {
-  color:#ccc;
 }
 
 .spacer {
-  color: #ccc;
 }
 
 .text,
 .link {
-  color: #ccc;
-  font-size: 1rem;
-  padding: 2px 5px;
   text-decoration: none;
 }
 

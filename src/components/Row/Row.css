@@ -1,10 +1,10 @@
 @import '../../components/variables.css';
 
 .root {
-  border-top: 1px solid #ccc;
+  border-top: 1px solid var(--grey1);
   display: flex;
   height: 40px;
 }
 .root:last-of-type {
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid var(--grey1);
 }

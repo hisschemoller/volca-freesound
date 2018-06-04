@@ -10,7 +10,6 @@
 @import '../../components/variables.css';
 
 .root {
-  color: #ccc;
   padding-left: 20px;
   padding-right: 20px;
 }
@@ -34,5 +33,5 @@
   font-weight: normal;
 }
 .row {
-  border-top: 1px solid #ccc;
+  border-top: 1px solid var(--grey1);
 }

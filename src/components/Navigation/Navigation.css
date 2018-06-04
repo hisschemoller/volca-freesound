@@ -8,21 +8,16 @@
  */
 
 .root {
-  float: right;
-  margin: 6px 0 0;
 }
 
 .link {
   display: inline-block;
-  padding: 3px 8px;
   text-decoration: none;
-  font-size: 1.125em; /* ~18px */
 }
 
 .link,
 .link:active,
 .link:visited {
-  color: #ccc;
 }
 
 .link:hover {
@@ -30,5 +25,4 @@
 }
 
 .spacer {
-  color: #ccc;
 }
