@@ -13,6 +13,8 @@ import {
 import s from './Volca.css';
 import FormControl from '../FormControl';
 import Row from '../Row';
+import Section from '../Section';
+import Slots from '../Slots';
 
 class Volca extends React.Component {
   static propTypes = {
@@ -33,7 +35,7 @@ class Volca extends React.Component {
     } = this.props;
 
     return (
-      <div>
+      <Section title="Volca sample slot selection">
         <Row>
           <FormControl
             id="from"
@@ -91,7 +93,8 @@ class Volca extends React.Component {
             Select All
           </button>
         </Row>
-      </div>
+        <Slots />
+      </Section>
     );
   }
 }

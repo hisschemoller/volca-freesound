@@ -8,6 +8,7 @@ import downloadReceipt from '../../actions/downloadReceipt.actions';
 import fetchRandomSound from '../../actions/fetchRandomSound.actions';
 import s from './Transfer.css';
 import Row from '../Row';
+import Section from '../Section';
 
 class Transfer extends React.Component {
   static propTypes = {
@@ -26,7 +27,7 @@ class Transfer extends React.Component {
       btnText = this.props.isPaused ? 'Stopping...' : 'Stop';
     }
     return (
-      <div>
+      <Section title="File transfer">
         <Row>
           <progress max="1" value={this.props.position} />
           <span>{Math.round(this.props.position * 100)}%</span>
@@ -63,7 +64,7 @@ class Transfer extends React.Component {
             Download receipt (text file)
           </button>
         </div>
-      </div>
+      </Section>
     );
   }
 }

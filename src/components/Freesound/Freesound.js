@@ -8,6 +8,7 @@ import fetchSounds from '../../actions/fetchSounds.actions';
 import { setDurationMax } from '../../actions/volca.actions';
 import FormControl from '../FormControl';
 import Row from '../Row';
+import Section from '../Section';
 
 class Freesound extends React.Component {
   static propTypes = {
@@ -36,7 +37,7 @@ class Freesound extends React.Component {
     const { count, dispatch, durationMax } = this.props;
 
     return (
-      <div>
+      <Section title="Freesound settings">
         <Row>
           <FormControl
             id="duration_max"
@@ -63,7 +64,7 @@ class Freesound extends React.Component {
             {count > 0 ? `${count} samples found` : `No samples available.`}
           </span>
         </Row>
-      </div>
+      </Section>
     );
   }
 }

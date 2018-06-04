@@ -26,8 +26,6 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import { initialize } from '../../actions/volca.actions';
 import s from './Main.css';
 import Freesound from '../Freesound';
-import Section from '../Section';
-import Slots from '../Slots';
 import Sound from '../Sound';
 import Transfer from '../Transfer';
 import Volca from '../Volca';
@@ -60,21 +58,12 @@ class Main extends React.Component {
         <div className={s.container}>
           <div className={s.grid}>
             <div className={s.grid__column}>
-              <Section title="Freesound settings">
-                <Freesound />
-              </Section>
-              <Section title="Sound settings">
-                <Sound />
-              </Section>
-              <Section title="File transfer">
-                <Transfer />
-              </Section>
+              <Freesound />
+              <Sound />
+              <Transfer />
             </div>
             <div className={s.grid__column}>
-              <Section title="Volca sample slot settings">
-                <Volca />
-                <Slots />
-              </Section>
+              <Volca />
             </div>
           </div>
         </div>

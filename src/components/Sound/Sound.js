@@ -10,6 +10,7 @@ import {
 import s from './Sound.css';
 import FormControl from '../FormControl';
 import Row from '../Row';
+import Section from '../Section';
 
 class Sound extends React.Component {
   static propTypes = {
@@ -22,7 +23,7 @@ class Sound extends React.Component {
     const { dispatch, isDoubleSpeed, isNormalize } = this.props;
 
     return (
-      <div>
+      <Section title="Audio settings">
         <Row>
           <FormControl
             id="normalize"
@@ -45,7 +46,7 @@ class Sound extends React.Component {
             value={isDoubleSpeed}
           />
         </Row>
-      </div>
+      </Section>
     );
   }
 }
