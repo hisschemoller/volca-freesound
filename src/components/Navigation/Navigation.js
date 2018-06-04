@@ -12,7 +12,7 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Navigation.css';
 import Link from '../Link';
 
-class Navigation extends React.Component {
+class Navigation extends React.PureComponent {
   render() {
     return (
       <div className={s.root} role="navigation">

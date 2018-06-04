@@ -13,7 +13,7 @@ import s from './Header.css';
 import Link from '../Link';
 import Navigation from '../Navigation';
 
-class Header extends React.Component {
+class Header extends React.PureComponent {
   render() {
     return (
       <div className={s.root}>

@@ -12,7 +12,7 @@ import FormControl from '../FormControl';
 import Row from '../Row';
 import Section from '../Section';
 
-class Sound extends React.Component {
+class Sound extends React.PureComponent {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     isDoubleSpeed: PropTypes.bool.isRequired,

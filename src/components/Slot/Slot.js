@@ -6,7 +6,7 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import { toggleSlot } from '../../actions/volca.actions';
 import s from './Slot.css';
 
-class Slot extends React.Component {
+class Slot extends React.PureComponent {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     index: PropTypes.number.isRequired,

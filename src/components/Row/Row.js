@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Row.css';
 
-class Section extends React.Component {
+class Section extends React.PureComponent {
   static propTypes = {
     children: PropTypes.node.isRequired,
   };

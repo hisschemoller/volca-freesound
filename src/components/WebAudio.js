@@ -2,7 +2,7 @@ import React from 'react';
 
 let audioContext;
 
-export default class WebAudio extends React.Component {
+export default class WebAudio extends React.PureComponent {
   componentWillMount() {
     if (AudioContext) {
       audioContext = new (window.AudioContext || window.webkitAudioContext)();

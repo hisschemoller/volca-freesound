@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './FormControl.css';
 
-class FormControl extends React.Component {
+class FormControl extends React.PureComponent {
   static propTypes = {
     id: PropTypes.string,
     label: PropTypes.string,

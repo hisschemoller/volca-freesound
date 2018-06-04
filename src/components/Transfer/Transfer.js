@@ -10,7 +10,7 @@ import s from './Transfer.css';
 import Row from '../Row';
 import Section from '../Section';
 
-class Transfer extends React.Component {
+class Transfer extends React.PureComponent {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     isPaused: PropTypes.bool.isRequired,

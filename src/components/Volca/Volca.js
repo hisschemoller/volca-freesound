@@ -16,7 +16,7 @@ import Row from '../Row';
 import Section from '../Section';
 import Slots from '../Slots';
 
-class Volca extends React.Component {
+class Volca extends React.PureComponent {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     isStarted: PropTypes.bool.isRequired,

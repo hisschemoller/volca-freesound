@@ -10,7 +10,7 @@ import FormControl from '../FormControl';
 import Row from '../Row';
 import Section from '../Section';
 
-class Freesound extends React.Component {
+class Freesound extends React.PureComponent {
   static propTypes = {
     count: PropTypes.number.isRequired,
     dispatch: PropTypes.func.isRequired,

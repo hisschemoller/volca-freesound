@@ -32,7 +32,7 @@ import Volca from '../Volca';
 
 let audioContext;
 
-class Main extends React.Component {
+class Main extends React.PureComponent {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
   };

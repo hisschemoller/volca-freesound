@@ -6,7 +6,7 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import Slot from '../Slot/Slot';
 import s from './Slots.css';
 
-class Slots extends React.Component {
+class Slots extends React.PureComponent {
   static propTypes = {
     slotIndex: PropTypes.number,
     slots: PropTypes.arrayOf(PropTypes.number).isRequired,
