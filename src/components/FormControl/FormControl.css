@@ -1,8 +1,19 @@
 @import '../../components/variables.css';
 
+.root {
+  display: flex;
+  width: 100%;
+}
 .label {
-  
+  flex-basis: 50%;
+  flex-grow: 1;
+  padding-left: 10px;
 }
 .input {
-  
+  flex-basis: 50%;
+  flex-grow: 1;
+}
+.input[type=text],
+.input[type=number] {
+  border: none;
 }

@@ -39,6 +39,7 @@ class Volca extends React.PureComponent {
         <Row>
           <FormControl
             id="from"
+            label="From"
             max={slotCount - 1}
             min="0"
             onChange={e => {
@@ -51,6 +52,7 @@ class Volca extends React.PureComponent {
           <FormControl
             disabled={isStarted ? 'disabled' : ''}
             id="to"
+            label="To"
             max={slotCount - 1}
             min="0"
             onChange={e => {

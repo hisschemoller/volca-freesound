@@ -7,19 +7,21 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
- @import '../variables.css';
+@import '../variables.css';
+
+.root {
+}
  
- .root {
- }
+.container {
+  margin: 0 auto;
+  padding: 0 0 40px;
+  max-width: var(--max-content-width);
+}
  
- .container {
-   max-width: var(--max-content-width);
- }
- 
- .brand {
+.brand {
    text-decoration: none;
- }
+}
  
- .brandTxt {
- }
+.brandTxt {
+}
  
