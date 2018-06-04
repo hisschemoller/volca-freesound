@@ -30,8 +30,7 @@ class FormControl extends React.PureComponent {
 
     if (type === 'checkbox') {
       return (
-        <label htmlFor={id} className={s.root}>
-          <span className={s.label}>{label}</span>
+        <label htmlFor={id} className={s.checkboxlabel}>
           <input
             type={type}
             id={id}
@@ -40,6 +39,7 @@ class FormControl extends React.PureComponent {
             onChange={props.onChange}
             {...props}
           />
+          <span className={s.label}>{label}</span>
         </label>
       );
     }

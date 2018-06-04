@@ -12,5 +12,5 @@
   height: 30px;
   line-height: 30px;
   margin: 0;
-  padding-left: 10px;
+  padding-left: var(--text-padding);
 }

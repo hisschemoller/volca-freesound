@@ -5,6 +5,6 @@
   border-left: 1px solid var(--grey1);
   border-right: 1px solid var(--grey1);
   display: flex;
-  height: 40px;
-  line-height: 40px;
+  height: var(--row-height);
+  line-height: var(--row-height);
 }

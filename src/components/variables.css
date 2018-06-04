@@ -36,11 +36,14 @@
    * ======================================================================== */
 
   --max-content-width: 850px;
+  --text-padding: 10px;
+  --row-height: 40px;
 
   /*
    * Media queries breakpoints
    * ======================================================================== */
 
+  --screen-columns: 600px;
   --screen-xs-min: 480px;  /* Extra small screen / phone */
   --screen-sm-min: 768px;  /* Small screen / tablet */
   --screen-md-min: 992px;  /* Medium screen / desktop */

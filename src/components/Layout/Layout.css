@@ -19,6 +19,10 @@
  * Base styles
  * ========================================================================== */
 
+* {
+  box-sizing: border-box;
+}
+
 html {
   background-color: var(--grey0);
   font-size: 1em; /* ~16px; */
@@ -179,5 +183,25 @@ textarea {
   h2,
   h3 {
     page-break-after: avoid;
+  }
+}
+
+button {
+  background-color: var(--grey1);
+  border: 1px solid var(--grey4);
+  color: var(--white);
+  cursor: pointer;
+  font-size: 14px;
+  margin: 7px;
+  outline: none;
+  white-space: nowrap;
+}
+
+.container {
+  padding: 0 10px; 
+}
+@media (min-width: 600px) {
+  .container {
+    padding: 0 20px; 
   }
 }

@@ -29,7 +29,7 @@ class Transfer extends React.PureComponent {
     return (
       <Section title="File transfer">
         <Row>
-          <progress max="1" value={this.props.position} />
+          <progress max="1" value={this.props.position} className={s.progress} />
           <span>{Math.round(this.props.position * 100)}%</span>
           <button
             onClick={e => {
@@ -51,18 +51,22 @@ class Transfer extends React.PureComponent {
             s.receipt + (this.props.showReceipt ? ` ${s.receiptreveal}` : '')
           }
         >
-          <span className={s.textline}>
-            File transfer has finished. Please download your receipt.
-          </span>
-          <button
-            onClick={e => {
-              e.preventDefault();
-              this.props.dispatch(downloadReceipt());
-            }}
-            type="button"
-          >
-            Download receipt (text file)
-          </button>
+          <Row>
+            <span className={s.textline}>
+              File transfer has finished. Please download your receipt.
+            </span>
+          </Row>
+          <Row>
+            <button
+              onClick={e => {
+                e.preventDefault();
+                this.props.dispatch(downloadReceipt());
+              }}
+              type="button"
+            >
+              Download receipt (text file)
+            </button>
+          </Row>
         </div>
       </Section>
     );

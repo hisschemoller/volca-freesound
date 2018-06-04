@@ -24,7 +24,7 @@ class Layout extends React.PureComponent {
 
   render() {
     return (
-      <div>
+      <div className={s.container}>
         <Header />
         {this.props.children}
         <Footer />

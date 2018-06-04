@@ -1,9 +1,9 @@
 @import '../../components/variables.css';
 
-button {
-  background-color: #eee;
-  border: none;
-  color: #bbb;
+.progress {
+  flex-grow: 1;
+  height: var(--row-height);
+  margin: 0 var(--text-padding);
 }
 .receipt {
   height: 0;
@@ -15,7 +15,7 @@ button {
   overflow: hidden;
 }
 .receiptreveal {
-  height: 60px;
+  height: 81px;
     -webkit-transition: var(--show-height) var(--show-time) var(--show-type);
        -moz-transition: var(--show-height) var(--show-time) var(--show-type);
         -ms-transition: var(--show-height) var(--show-time) var(--show-type);
@@ -24,4 +24,5 @@ button {
 }
 .textline {
   display: block;
+  padding: 0 var(--text-padding);
 }

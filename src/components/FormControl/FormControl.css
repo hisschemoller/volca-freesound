@@ -7,7 +7,7 @@
 .label {
   flex-basis: 50%;
   flex-grow: 1;
-  padding-left: 10px;
+  padding-left: var(--text-padding);
 }
 .input {
   flex-basis: 50%;
@@ -16,4 +16,34 @@
 .input[type=text],
 .input[type=number] {
   border: none;
+  margin: 6px var(--text-padding) 6px 0;
+  outline: none;
+  padding-left: var(--text-padding);
 }
+
+.checkboxlabel {
+  flex-basis: 50%;
+}
+.checkboxlabel .label {
+  cursor: pointer;
+  display: block;
+  position: relative;
+}
+.checkboxlabel [type='checkbox'] {
+  display: none;
+}
+.checkboxlabel [type='checkbox'] + .label:after {
+  content: '';
+  display: inline-block;
+  background-color: var(--grey1);
+  padding: 10px;
+  position: absolute;
+  right: -20px;
+  top: 10px;
+}
+.checkboxlabel [type='checkbox']:checked + .label:after {
+  background-color: var(--grey4);
+}
+/* .checkboxlabel [type='checkbox'][disabled] + .label:after {
+  background:#f00;  
+}​ */
