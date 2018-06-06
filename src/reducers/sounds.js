@@ -10,6 +10,8 @@
 import {
   CLEAR_ALL,
   INITIALIZE,
+  MODAL_HIDE,
+  MODAL_SHOW,
   PAUSE,
   PLAY_END,
   PLAY_PROGRESS,
@@ -37,6 +39,7 @@ const initialState = {
   isNormalize: false,
   isPaused: false,
   isStarted: false,
+  modalType: null,
   position: 0,
   rangeFirst: 0,
   rangeLast: 99,
@@ -202,6 +205,16 @@ export default function sounds(state = initialState, action) {
       return {
         ...state,
         isNormalize: !state.isNormalize,
+      };
+    case MODAL_HIDE:
+      return {
+        ...state,
+        modalType: initialState.modalType,
+      };
+    case MODAL_SHOW:
+      return {
+        ...state,
+        modalType: action.modalType,
       };
     default:
       return state;

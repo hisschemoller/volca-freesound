@@ -1,6 +1,8 @@
 import {
   CLEAR_ALL,
   INITIALIZE,
+  MODAL_HIDE,
+  MODAL_SHOW,
   PAUSE,
   SELECT_ALL,
   SET_RANGE,
@@ -32,3 +34,6 @@ export const selectAll = makeActionCreator(SELECT_ALL);
 
 export const toggleDoubleSpeed = makeActionCreator(TOGGLE_DOUBLE_SPEED);
 export const toggleNormalize = makeActionCreator(TOGGLE_NORMALIZE);
+
+export const hideModal = makeActionCreator(MODAL_HIDE);
+export const showModal = makeActionCreator(MODAL_SHOW, 'modalType');

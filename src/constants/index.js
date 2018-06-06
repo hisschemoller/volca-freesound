@@ -2,6 +2,8 @@
 
 export const CLEAR_ALL = 'CLEAR_ALL';
 export const INITIALIZE = 'INITIALIZE';
+export const MODAL_SHOW = 'MODAL_SHOW';
+export const MODAL_HIDE = 'MODAL_HIDE';
 export const PAUSE = 'PAUSE';
 export const PLAY_END = 'PLAY_END';
 export const PLAY_PROGRESS = 'PLAY_PROGRESS';
