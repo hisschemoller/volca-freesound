@@ -22,7 +22,7 @@ class ModalContainer extends React.PureComponent {
   };
 
   render() {
-    const { modalType } = this.props;
+    const { modalType, ...rest } = this.props;
 
     if (!modalType) {
       return null;
@@ -30,7 +30,7 @@ class ModalContainer extends React.PureComponent {
 
     const SpecificModal = ModalContainer.MODAL_COMPONENTS[modalType];
 
-    return <SpecificModal />;
+    return <SpecificModal {...rest} />;
   }
 }
 
