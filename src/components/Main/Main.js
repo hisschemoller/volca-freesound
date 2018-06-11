@@ -19,48 +19,15 @@
  */
 
 import React from 'react';
-import { connect } from 'react-redux';
 import compose from 'recompose/compose';
-import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import { initialize, showModal } from '../../actions/volca.actions';
 import s from './Main.css';
 import Freesound from '../Freesound';
-import { MODAL_UNLOCK_IOS_AUDIO } from '../../constants/modaltypes';
 import Sound from '../Sound';
 import Transfer from '../Transfer';
 import Volca from '../Volca';
 
-let audioContext;
-
 class Main extends React.PureComponent {
-  static propTypes = {
-    dispatch: PropTypes.func.isRequired,
-  };
-
-  static defaultProps = {};
-
-  /**
-   * When the component mounts:
-   * Create an AudioContext to play the encoded samples.
-   */
-  componentDidMount() {
-    audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    this.detectIOSDevice();
-    // this.props.dispatch(initialize());
-  }
-
-  componentWillUnmount() {
-    audioContext.close();
-  }
-
-  detectIOSDevice() {
-    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-      this.props.dispatch(showModal(MODAL_UNLOCK_IOS_AUDIO));
-    } else {
-      this.props.dispatch(initialize());
-    }
-  }
 
   render() {
     return (
@@ -80,12 +47,4 @@ class Main extends React.PureComponent {
   }
 }
 
-function mapStateToProps() {
-  return {};
-}
-
-export default compose(withStyles(s), connect(mapStateToProps))(Main);
-
-export function getAudioContext() {
-  return audioContext;
-}
+export default compose(withStyles(s))(Main);

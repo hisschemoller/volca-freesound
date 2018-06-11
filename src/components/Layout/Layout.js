@@ -17,6 +17,7 @@ import s from './Layout.css';
 import Footer from '../Footer';
 import Header from '../Header';
 import ModalContainer from '../ModalContainer';
+import WebAudio from '../WebAudio';
 
 class Layout extends React.PureComponent {
   static propTypes = {
@@ -30,6 +31,7 @@ class Layout extends React.PureComponent {
         {this.props.children}
         <Footer />
         <ModalContainer />
+        <WebAudio />
       </div>
     );
   }

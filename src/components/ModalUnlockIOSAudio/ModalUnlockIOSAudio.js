@@ -6,7 +6,7 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import { initialize, hideModal } from '../../actions/volca.actions';
 import s from './ModalUnlockIOSAudio.css';
 import Modal from '../Modal';
-import { getAudioContext } from '../Main';
+import { getAudioContext } from '../WebAudio';
 
 class ModalUnlockIOSAudio extends React.PureComponent {
   static propTypes = {
