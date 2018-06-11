@@ -6,6 +6,7 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import { initialize, hideModal } from '../../actions/volca.actions';
 import s from './ModalUnlockIOSAudio.css';
 import Modal from '../Modal';
+import { getAudioContext } from '../Main';
 
 class ModalUnlockIOSAudio extends React.PureComponent {
   static propTypes = {
@@ -13,8 +14,29 @@ class ModalUnlockIOSAudio extends React.PureComponent {
   };
 
   unlockIOSAudio() {
-    console.log('unlockIOSAudio');
-    this.props.dispatch(initialize());
+    const audioContext = getAudioContext();
+
+    // create an empty buffer
+    const buffer = audioContext.createBuffer(1, 1, 22050);
+    const source = audioContext.createBufferSource();
+    source.buffer = buffer;
+    source.connect(audioContext.destination);
+
+    // play the empty buffer
+    if (typeof source.start === 'undefined') {
+      source.noteOn(0);
+    } else {
+      source.start(0);
+    }
+
+    // setup a timer to wait for audio to run
+    const interval = setInterval(() => {
+      if (audioContext.currentTime > 0) {
+        clearInterval(interval);
+        this.props.dispatch(initialize());
+        this.props.dispatch(hideModal());
+      }
+    }, 100);
   }
 
   render() {
@@ -32,7 +54,6 @@ class ModalUnlockIOSAudio extends React.PureComponent {
           <button
             onClick={() => {
               this.unlockIOSAudio();
-              dispatch(hideModal());
             }}
           >
             Ok
@@ -43,4 +64,10 @@ class ModalUnlockIOSAudio extends React.PureComponent {
   }
 }
 
-export default compose(withStyles(s), connect(() => {}))(ModalUnlockIOSAudio);
+function mapStateToProps() {
+  return {};
+}
+
+export default compose(withStyles(s), connect(mapStateToProps))(
+  ModalUnlockIOSAudio,
+);
