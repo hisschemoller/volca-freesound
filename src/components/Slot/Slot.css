@@ -6,6 +6,7 @@
   padding-bottom: 8%;
   position: relative;
 }
+
 .button {
   border: 1px solid var(--grey4);
   bottom: 1px;
@@ -18,28 +19,35 @@
   text-align: center;
   top: 1px;
 }
+
 .button[data-status='0'] {
   background: var(--blue-light);
   color: var(--white);
 }
+
 .button[data-status='1'] {
   background: var(--blue);
   color: var(--white);
 }
+
 .button[data-status='2'] {
   background: #aaa;
   color: #fff;
 }
+
 .button[data-status='3'] {
   background: #666;
   color: #ddd;
 }
+
 .button[data-status='4'] {
   background: #000;
   color: #fff;
 }
+
 .label {
-  position: relative;
+  position: absolute;
   top: 50%;
-  transform: translateY(-50%); 
+  transform: translateY(-50%);
+  width: 100%;
 }
