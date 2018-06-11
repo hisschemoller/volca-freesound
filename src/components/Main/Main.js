@@ -28,7 +28,6 @@ import Transfer from '../Transfer';
 import Volca from '../Volca';
 
 class Main extends React.PureComponent {
-
   render() {
     return (
       <div className={s.root}>

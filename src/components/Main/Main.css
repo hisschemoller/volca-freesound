@@ -14,20 +14,15 @@
   padding: 0 0 40px;
   max-width: var(--max-content-width);
 }
+
 @media (min-width: 600px) {
   .grid {
     display: grid;
     grid-column-gap: 10px;
     grid-template-columns: 1fr 1fr;
   }
+
   .grid__column {
     grid-column: span 1;
   }
-}
-.title {
-  font-size: 1rem;
-  font-weight: normal;
-}
-.row {
-  border-top: 1px solid var(--grey1);
 }

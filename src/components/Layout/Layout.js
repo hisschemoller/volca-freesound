@@ -25,10 +25,12 @@ class Layout extends React.PureComponent {
   };
 
   render() {
+    const { children } = this.props;
+
     return (
-      <div className={s.container}>
+      <div className={s.root}>
         <Header />
-        {this.props.children}
+        {children}
         <Footer />
         <ModalContainer />
         <WebAudio />
