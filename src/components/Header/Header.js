@@ -19,7 +19,7 @@ class Header extends React.PureComponent {
       <div className={s.root}>
         <div className={s.container}>
           <Navigation />
-          <Link className={s.brand} to="/">
+          <Link className={s.brand} to="main">
             <span className={s.brandTxt}>Volca Freesound</span>
           </Link>
         </div>

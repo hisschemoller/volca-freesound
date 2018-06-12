@@ -16,15 +16,15 @@ class Navigation extends React.PureComponent {
   render() {
     return (
       <div className={s.root} role="navigation">
-        <Link className={s.link} to="/">
+        <Link className={s.link} to="main">
           Transfer
         </Link>
         <span className={s.spacer}> | </span>
-        <Link className={s.link} to="/help">
+        <Link className={s.link} to="help">
           Help
         </Link>
         <span className={s.spacer}> | </span>
-        <Link className={s.link} to="/about">
+        <Link className={s.link} to="about">
           About
         </Link>
       </div>
