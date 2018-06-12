@@ -49,6 +49,10 @@ class Html extends React.PureComponent {
           ))}
           <link rel="manifest" href="/site.webmanifest" />
           <link rel="apple-touch-icon" href="/icon.png" />
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Roboto"
+          />
           {styles.map(style => (
             <style
               key={style.id}
