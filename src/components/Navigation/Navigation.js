@@ -19,11 +19,11 @@ class Navigation extends React.PureComponent {
         <Link className={s.link} to="main">
           Transfer
         </Link>
-        <span className={s.spacer}> | </span>
+        <span className={s.spacer}>&nbsp;</span>
         <Link className={s.link} to="help">
           Help
         </Link>
-        <span className={s.spacer}> | </span>
+        <span className={s.spacer}>&nbsp;</span>
         <Link className={s.link} to="about">
           About
         </Link>

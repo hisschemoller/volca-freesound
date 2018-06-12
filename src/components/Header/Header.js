@@ -17,12 +17,10 @@ class Header extends React.PureComponent {
   render() {
     return (
       <div className={s.root}>
-        <div className={s.container}>
-          <Navigation />
-          <Link className={s.brand} to="main">
-            <span className={s.brandTxt}>Volca Freesound</span>
-          </Link>
-        </div>
+        <Link className={s.brand} to="main">
+          <span className={s.brandTxt}>Volca Freesound</span>
+        </Link>
+        <Navigation />
       </div>
     );
   }

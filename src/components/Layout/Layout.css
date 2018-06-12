@@ -25,12 +25,14 @@
 
 html {
   background-color: var(--grey0);
+  color: var(--grey4);
   font-size: 1em; /* ~16px; */
   font-family: var(--font-family-base);
 }
 
 body {
   background-color: var(--grey0);
+  color: var(--grey4);
   margin: 0;
 }
 

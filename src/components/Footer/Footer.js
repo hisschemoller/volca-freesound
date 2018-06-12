@@ -15,15 +15,10 @@ class Footer extends React.PureComponent {
   render() {
     return (
       <div className={s.root}>
-        <div className={s.container}>
-          <span className={s.text}>© Wouter Hisschemoller</span>
-          <span className={s.spacer}>·</span>
-          <span className={s.text}>2018</span>
-          <span className={s.spacer}>·</span>
-          <a className={s.link} href="http://www.hisschemoller.com">
-            www.hisschemoller.com
-          </a>
-        </div>
+        <span className={s.name}>© Wouter Hisschemoller, 2018</span>
+        <a className={s.link} href="http://www.hisschemoller.com">
+          www.hisschemoller.com
+        </a>
       </div>
     );
   }
