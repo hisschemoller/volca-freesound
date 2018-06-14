@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import { pause, start } from '../../actions/volca.actions';
 import downloadReceipt from '../../actions/downloadReceipt.actions';
-import fetchRandomSound from '../../actions/fetchRandomSound.actions';
+import evaluateSounds from '../../actions/evaluateSounds.actions';
 import s from './Transfer.css';
 import Row from '../Row';
 import Section from '../Section';
@@ -29,7 +29,11 @@ class Transfer extends React.PureComponent {
     return (
       <Section title="File transfer">
         <Row>
-          <progress max="1" value={this.props.position} className={s.progress} />
+          <progress
+            max="1"
+            value={this.props.position}
+            className={s.progress}
+          />
           <span>{Math.round(this.props.position * 100)}%</span>
           <button
             onClick={e => {
@@ -38,7 +42,7 @@ class Transfer extends React.PureComponent {
                 this.props.dispatch(pause());
               } else {
                 this.props.dispatch(start());
-                this.props.dispatch(fetchRandomSound());
+                this.props.dispatch(evaluateSounds());
               }
             }}
             type="button"
