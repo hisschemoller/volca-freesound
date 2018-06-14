@@ -4,15 +4,18 @@
   display: flex;
   width: 100%;
 }
+
 .label {
   flex-basis: 50%;
   flex-grow: 1;
   padding-left: var(--text-padding);
 }
+
 .input {
   flex-basis: 50%;
   flex-grow: 1;
 }
+
 .input[type=text],
 .input[type=number] {
   border: none;
@@ -24,14 +27,17 @@
 .checkboxlabel {
   flex-basis: 50%;
 }
+
 .checkboxlabel .label {
   cursor: pointer;
   display: block;
   position: relative;
 }
+
 .checkboxlabel [type='checkbox'] {
   display: none;
 }
+
 .checkboxlabel [type='checkbox'] + .label:after {
   content: '';
   display: inline-block;
@@ -43,11 +49,14 @@
   top: 10px;
   width: 20px;
 }
+
 .checkboxlabel [type='checkbox']:checked + .label:after {
   background: var(--grey0) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10' fill='#2f3954' stroke='none'><path d='M0,0 L0,10 L10,10 L10,0 L0,0 Z'></path></svg>") center center no-repeat;
+
   /* content: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10' fill='#f00' stroke='none'><path d='M933 534q0-22-16-38l-404-404-76-76q-16-15-38-15t-38 15l-76 76-202 202q-15 16-15 38t15 38l76 76q16 16 38 16t38-16l164-165 366 367q16 16 38 16t38-16l76-76q16-15 16-38z'></path></svg>"); */
   content: '';
 }
+
 /* .checkboxlabel [type='checkbox'][disabled] + .label:after {
   background:#f00;  
 }​ */

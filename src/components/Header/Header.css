@@ -15,10 +15,11 @@
   max-width: var(--max-content-width);
   padding: 40px 0 20px;
 }
+
 .brand {
   color: var(--red);
   text-decoration: none;
 }
+
 .brandTxt {
 }
- 

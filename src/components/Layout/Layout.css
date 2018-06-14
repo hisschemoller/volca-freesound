@@ -190,8 +190,8 @@ textarea {
 
 button {
   background-color: var(--grey0);
-  border: 1px solid var(--grey3);
-  color: var(-grey4);
+  border: 1px solid var(--grey2);
+  color: var(--grey4);
   cursor: pointer;
   font-size: 14px;
   margin: 7px;

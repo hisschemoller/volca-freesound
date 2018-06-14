@@ -15,16 +15,19 @@
   max-width: var(--max-content-width);
   text-align: center;
 }
+
 .name {
   display: block;
   margin-bottom: 6px;
 }
+
 .link,
 .link:visited,
 .link:active {
   color: var(--grey4);
   text-decoration: none;
 }
+
 .link:hover {
   text-decoration: underline;
 }
