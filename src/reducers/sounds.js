@@ -176,7 +176,7 @@ export default function sounds(state = initialState, action) {
     case INITIALIZE:
       return {
         ...state,
-        slots: new Array(state.slotCount).fill(1, 0, state.slotCount),
+        slots: new Array(state.slotCount).fill(0, 0, state.slotCount),
       };
     case START:
       return {
