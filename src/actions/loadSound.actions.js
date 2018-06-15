@@ -112,6 +112,7 @@ function normalize(audioBuffer) {
   }
   const max = Math.max(Math.abs(maxPos), Math.abs(maxNeg));
   const amp = Math.max(1 / max, 1);
+
   // amp values
   for (
     let channelIndex = 0;
@@ -131,13 +132,14 @@ function normalize(audioBuffer) {
 
 /**
  * Double the speed of the sample.
+ * @param {Object} audioContext Web Audio context.
  * @param {Object} audioBuffer AudioBuffer object.
  * @return {Object} audioBuffer New half length double speed audioBuffer.
  */
-function doubleSpeed(audioBuffer) {
-  const newAudioBuffer = new AudioBuffer(
-    Math.floor(audioBuffer.length / 2),
+function doubleSpeed(audioContext, audioBuffer) {
+  const newAudioBuffer = audioContext.createBuffer(
     audioBuffer.numberOfChannels,
+    Math.floor(audioBuffer.length / 2),
     audioBuffer.sampleRate,
   );
   const bufferLength = newAudioBuffer.length;
@@ -175,22 +177,24 @@ export default function loadSound(url) {
 
             // normalize the sample
             let audioBuffer2 = audioBuffer;
-            if (state.isNormalize) {
+            if (state.sounds.isNormalize) {
               audioBuffer2 = normalize(audioBuffer);
             }
 
             // double speed sample
             let audioBuffer3 = audioBuffer2;
-            if (state.isDoubleSpeed) {
-              audioBuffer3 = doubleSpeed(audioBuffer2);
+            if (state.sounds.isDoubleSpeed) {
+              audioBuffer3 = doubleSpeed(audioContext, audioBuffer2);
             }
 
+            // convert to wav file format
             const wavBlob = bufferToWav(
               audioBuffer3,
               audioBuffer3.numberOfChannels,
               audioBuffer3.sampleRate,
             );
 
+            // convert to syro signal
             window.Syrialize(wavBlob, state.sounds.slotIndex, syroBlob => {
               const fileReader = new FileReader();
               fileReader.onload = () => {
