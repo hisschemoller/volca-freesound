@@ -9,23 +9,25 @@
 
 .root {
   flex-grow: 1;
-  text-align: right;
+  text-align: left;
 }
-
 .link {
   display: inline-block;
   text-decoration: none;
 }
-
 .link,
 .link:active,
 .link:visited {
   color: var(--grey4);
 }
-
 .link:hover {
   text-decoration: underline;
 }
-
 .spacer {
+  padding: 0 4px;
+}
+@media (min-width: 600px) {
+  .root {
+    text-align: right;
+  }
 }

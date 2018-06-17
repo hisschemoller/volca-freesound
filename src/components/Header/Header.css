@@ -10,16 +10,23 @@
 @import '../variables.css';
 
 .root {
+  align-items: flex-end;
   display: flex;
+  flex-wrap: wrap;
   margin: 0 auto;
   max-width: var(--max-content-width);
-  padding: 40px 0 20px;
+  padding: 40px 0 10px;
 }
-
 .brand {
   color: var(--red);
   text-decoration: none;
 }
-
 .brandTxt {
+  font-size: 38px;
+  font-weight: 700;
+}
+@media (min-width: 600px) {
+  .brandTxt {
+    font-size: 42px;
+  }
 }
