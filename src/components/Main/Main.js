@@ -22,7 +22,9 @@ import React from 'react';
 import compose from 'recompose/compose';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Main.css';
+import Col from '../Col';
 import Freesound from '../Freesound';
+import Grid from '../Grid';
 import Sound from '../Sound';
 import Transfer from '../Transfer';
 import Volca from '../Volca';
@@ -30,18 +32,16 @@ import Volca from '../Volca';
 class Main extends React.PureComponent {
   render() {
     return (
-      <div className={s.root}>
-        <div className={s.grid}>
-          <div className={s.grid__column}>
-            <Freesound />
-            <Sound />
-            <Transfer />
-          </div>
-          <div className={s.grid__column}>
-            <Volca />
-          </div>
-        </div>
-      </div>
+      <Grid>
+        <Col>
+          <Freesound />
+          <Sound />
+          <Transfer />
+        </Col>
+        <Col>
+          <Volca />
+        </Col>
+      </Grid>
     );
   }
 }
