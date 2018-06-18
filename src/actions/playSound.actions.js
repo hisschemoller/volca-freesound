@@ -24,7 +24,9 @@ export default function playSound(audioContext, audioBuffer) {
     const duration =
       audioBuffer.duration * bufferSource.playbackRate.value * 1000;
     intervalID = setInterval(() => {
-      dispatch(playProgress((performance.now() - startTime) / duration));
+      dispatch(
+        playProgress(Math.min((performance.now() - startTime) / duration), 1),
+      );
     }, 200);
   };
 }

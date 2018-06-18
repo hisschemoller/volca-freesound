@@ -65,6 +65,7 @@ export default function sounds(state = initialState, action) {
       return {
         ...state,
         duration: 0,
+        position: 1,
         slots: state.slots.reduce((accumulator, slot, index) => {
           accumulator.push(index === state.slotIndex ? 2 : slot);
           return accumulator;
