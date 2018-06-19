@@ -44,7 +44,7 @@ const routes = {
     const route = await next();
 
     // Provide default values for title, description etc.
-    route.title = `${route.title || 'Untitled Page'} - VF`;
+    route.title = `${route.title || 'Untitled Page'} - Volca Freesound`;
     route.description = route.description || '';
 
     return route;
