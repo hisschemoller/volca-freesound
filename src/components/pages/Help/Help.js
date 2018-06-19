@@ -11,34 +11,44 @@ class Help extends React.PureComponent {
     return (
       <Grid>
         <Col>
-          <Section title="Help">
+          <Section title="The application">
             <p className={s.p}>
-              This application downloads random sounds from the{' '}
-              <a
-                href="http://https.freesound.org"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Freesound
-              </a>{' '}
-              database and transfers them to a connected{' '}
+              This app downloads random files from the Freesound audio database
+              and transfers them to a Korg Volca Sample connected to the
+              computer's audio output. The app runs in any reasonably modern
+              browser, desktop or mobile, as long as the device has a headphone
+              or audio output. Please find the Volca Freesound app here:
+            </p>
+            <p className={s.p} />
+            <p className={s.p} />
+          </Section>
+        </Col>
+        <Col>
+          <Section title="Korg Volca Sample">
+            <p className={s.p}>
+              The Korg{' '}
               <a
                 href="http://www.korg.com/us/products/dj/volca_sample/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Korg Volca Sample
-              </a>.
+                Volca Sample
+              </a>{' '}
+              musical instrument by Japanese electronic instrument maker{' '}
+              <a
+                href="http://www.korg.com/us/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Korg
+              </a>{' '}
+              that plays audio samples. The unusual thing about the Volca Sample
+              is that it can't record sound. So it's not a sampler in the proper
+              sense of the word, but a sample player. Samples must be
+              transferred with a dedicated computer application.
             </p>
-            <p className={s.p} />
-            <p className={s.p} />
           </Section>
-          <Section title="Help">
-            <p className={s.p}>bla</p>
-          </Section>
-        </Col>
-        <Col>
-          <Section title="Acknowledgments">
+          <Section title="Freesound">
             <p className={s.p}>
               I started this app to learn the React Javascript framework with
               Redux state management. For this first React project I used
