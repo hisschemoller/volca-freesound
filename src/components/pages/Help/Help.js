@@ -15,9 +15,11 @@ class Help extends React.PureComponent {
             <p className={s.p}>
               This app downloads random files from the Freesound audio database
               and transfers them to a Korg Volca Sample connected to the
-              computer's audio output. The app runs in any reasonably modern
-              browser, desktop or mobile, as long as the device has a headphone
-              or audio output. Please find the Volca Freesound app here:
+              computer's audio output.
+            </p>
+            <p className={s.p}>
+              The app runs in any reasonably modern browser, desktop or mobile,
+              as long as the device has a headphone or audio output.
             </p>
             <p className={s.p} />
             <p className={s.p} />
@@ -34,30 +36,54 @@ class Help extends React.PureComponent {
               >
                 Volca Sample
               </a>{' '}
-              musical instrument by Japanese electronic instrument maker{' '}
+              is a musical instrument by Japanese manufacturer{' '}
               <a
                 href="http://www.korg.com/us/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Korg
-              </a>{' '}
-              that plays audio samples. The unusual thing about the Volca Sample
-              is that it can't record sound. So it's not a sampler in the proper
-              sense of the word, but a sample player. Samples must be
-              transferred with a dedicated computer application.
+              </a>.
+            </p>
+            <p className={s.p}>
+              It plays audio samples, but it can't record them. Audio files are
+              transferred to it from a computer or a mobile device. So it's not
+              a sampler in the proper sense of the word, but a sample player.
             </p>
           </Section>
           <Section title="Freesound">
             <p className={s.p}>
-              I started this app to learn the React Javascript framework with
-              Redux state management. For this first React project I used
-              Kriasoft's React Starter Kit.
+              <a
+                href="http://https.freesound.org"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                www.freesound.org
+              </a>{' '}
+              is a collaborative audio database where anyone can upload audio
+              samples and recordings and share them under Creative Commons
+              licenses. It's an initiative of the{' '}
+              <a
+                href="https://www.upf.edu/web/mtg"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Music Technology Group
+              </a>{' '}
+              of Universitat Pompeu Fabra in Barcelona. More information on
+              their{' '}
+              <a
+                href="https://freesound.org/help/about/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                about
+              </a>{' '}
+              page.
             </p>
             <p className={s.p}>
-              To convert the audio files to the type of signal the Volca Sample
-              uses, I used the syro.js library that Panagiotis Tigas translated
-              to Javascript from the original SYRO SDK by Korg.
+              Freesound has an API to retrieve information and sounds from their
+              database. It's used by this app to find and download sounds.
             </p>
           </Section>
         </Col>

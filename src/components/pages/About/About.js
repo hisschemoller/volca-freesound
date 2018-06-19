@@ -40,9 +40,9 @@ class About extends React.PureComponent {
         <Col>
           <Section title="Acknowledgments">
             <p className={s.p}>
-              I started this app to learn the React Javascript framework with
-              Redux state management. For this first React project I used
-              Kriasoft's React Starter Kit.
+              I started this project to learn React, a Javascript framework,
+              and Redux, a library for state management. For this first React
+              project I used Kriasoft's React Starter Kit.
             </p>
             <p className={s.p}>
               To convert the audio files to the type of signal the Volca Sample
