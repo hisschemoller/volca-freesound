@@ -1,4 +1,4 @@
-import { getAudioContext } from '../components/WebAudio';
+import { getAudioContext } from '../components/app/WebAudio';
 import { initialize } from './volca.actions';
 
 export default function unlockIOSAudio() {

@@ -37,3 +37,23 @@ export default function fetchRandomSound() {
       );
   };
 }
+
+// export default function fetchRandomSound() {
+//   return dispatch => {
+//     const json = {
+//       id: '375998',
+//       license: 'http://creativecommons.org/licenses/by-nc/3.0/',
+//       name: 'test.wav',
+//       previews: {
+//         'preview-hq-mp3': 'audio/sine_c3_2sec.wav', // 'https://freesound.org/data/previews/375/375998_6947862-hq.mp3',
+//       },
+//       duration: '2.30748',
+//       type: 'wav',
+//       url: 'https://freesound.org/people/jreusserlogikos/sounds/375998/',
+//       username: 'jreusserlogikos',
+//     };
+//     dispatch(requestRandomSound());
+//     dispatch(receiveRandomSound(json));
+//     dispatch(loadSound(json.previews['preview-hq-mp3']));
+//   };
+// }

@@ -1,0 +1,53 @@
+@import '../../variables.css';
+
+.root {
+  flex-basis: 10%;
+  height: 0;
+  padding-bottom: 8%;
+  position: relative;
+}
+
+.button {
+  border: 1px solid var(--grey4);
+  bottom: 1px;
+  cursor: pointer;
+  font-size: 14px;
+  left: 1px;
+  outline: none;
+  position: absolute;
+  right: 1px;
+  text-align: center;
+  top: 1px;
+}
+
+.button[data-status='0'] {
+  background: var(--blue-light);
+  color: var(--white);
+}
+
+.button[data-status='1'] {
+  background: var(--blue);
+  color: var(--white);
+}
+
+.button[data-status='2'] {
+  background: var(--green);
+  color: var(--white);
+}
+
+.button[data-status='3'] {
+  background: var(--green-bright);
+  color: var(--white);
+}
+
+.button[data-status='4'] {
+  background: var(--red);
+  color: var(--white);
+}
+
+.label {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+}

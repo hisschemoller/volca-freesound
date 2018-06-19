@@ -1,15 +1,16 @@
 import React from 'react';
-import Layout from '../../components/Layout';
-import Page from '../../components/Page';
-import help from './help.md';
+import Layout from '../../components/organisms/Layout';
+import About from '../../components/pages/About';
+
+const title = 'About';
 
 function action() {
   return {
-    chunks: ['help'],
-    title: help.title,
+    title,
+    chunks: ['about'],
     component: (
       <Layout>
-        <Page {...help} />
+        <About title={title} />
       </Layout>
     ),
   };

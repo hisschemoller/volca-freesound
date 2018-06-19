@@ -1,7 +1,7 @@
 import { REQUEST_SOUND, RECEIVE_SOUND, REJECT_SOUND } from '../constants';
 import playSound from './playSound.actions';
 import { makeActionCreator } from './actionUtils';
-import { getAudioContext } from '../components/WebAudio';
+import { getAudioContext } from '../components/app/WebAudio';
 
 const requestSound = makeActionCreator(REQUEST_SOUND, 'query');
 const receiveSound = makeActionCreator(RECEIVE_SOUND, 'json');

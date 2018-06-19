@@ -1,0 +1,47 @@
+@import '../../variables.css';
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.65);
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.content {
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: fixed;
+  overflow: auto;
+  padding: 4px;
+  right: 0;
+  text-align: center;
+  top: 0;
+  z-index: 10000;
+}
+
+.content:after {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  margin-left: -0.05em;
+  vertical-align: middle;
+}
+
+.dialog {
+  background-color: var(--grey0); 
+  border-radius: 4px;
+  cursor: default;
+  display: inline-block;
+  max-width: auto;
+  outline: 0;
+  padding: 10px 20px;
+  position: relative;
+  vertical-align: middle;
+  width: auto;
+}

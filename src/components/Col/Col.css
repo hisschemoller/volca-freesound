@@ -1,7 +1,0 @@
-@import '../../components/variables.css';
-
-@media (min-width: 600px) {
-  .root {
-    grid-column: span 1;
-  }
-}
