@@ -185,6 +185,11 @@ textarea {
   }
 }
 
+a,
+a:visited {
+  color: var(--grey4);
+}
+
 button {
   background-color: var(--grey0);
   border: 1px solid var(--grey2);

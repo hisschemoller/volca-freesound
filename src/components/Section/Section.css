@@ -1,11 +1,13 @@
 @import '../../components/variables.css';
 
 .root {
+  border-bottom: 1px solid var(--grey1);
+  border-left: 1px solid var(--grey1);
+  border-right: 1px solid var(--grey1);
   margin-bottom: 10px;
 }
 .header {
   background-color: var(--grey1);
-  border: 1px solid var(--grey1);
   color: var(--white);
   font-size: 1rem;
   font-weight: normal;

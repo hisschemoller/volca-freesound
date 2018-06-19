@@ -9,7 +9,10 @@
 
 @import '../variables.css';
 
-.root {}
+.p {
+  line-height: 22px;
+  padding: 0 10px;
+}
 
 .name {
   display: block;
