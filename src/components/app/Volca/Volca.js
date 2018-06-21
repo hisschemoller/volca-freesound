@@ -35,68 +35,70 @@ class Volca extends React.PureComponent {
     } = this.props;
 
     return (
-      <Section title="Volca sample slot selection">
-        <Row>
-          <FormControl
-            id="from"
-            label="From"
-            max={slotCount - 1}
-            min="0"
-            onChange={e => {
-              e.preventDefault();
-              dispatch(setRangeFirst(e.target.value));
-            }}
-            type="number"
-            value={rangeFirst}
-          />
-          <FormControl
-            disabled={isStarted ? 'disabled' : ''}
-            id="to"
-            label="To"
-            max={slotCount - 1}
-            min="0"
-            onChange={e => {
-              e.preventDefault();
-              dispatch(setRangeLast(e.target.value));
-            }}
-            type="number"
-            value={rangeLast}
-          />
-          <button
-            disabled={isStarted ? 'disabled' : ''}
-            onClick={e => {
-              e.preventDefault();
-              dispatch(setRange());
-            }}
-            type="button"
-          >
-            Set range
-          </button>
-        </Row>
-        <Row>
-          <button
-            disabled={isStarted ? 'disabled' : ''}
-            onClick={e => {
-              e.preventDefault();
-              dispatch(clearAll());
-            }}
-            type="button"
-          >
-            Clear All
-          </button>
-          <button
-            disabled={isStarted ? 'disabled' : ''}
-            onClick={e => {
-              e.preventDefault();
-              dispatch(selectAll());
-            }}
-            type="button"
-          >
-            Select All
-          </button>
-        </Row>
+      <div>
+        <Section title="Volca sample slot selection">
+          <Row>
+            <FormControl
+              id="from"
+              label="From"
+              max={slotCount - 1}
+              min="0"
+              onChange={e => {
+                e.preventDefault();
+                dispatch(setRangeFirst(e.target.value));
+              }}
+              type="number"
+              value={rangeFirst}
+            />
+            <FormControl
+              disabled={isStarted ? 'disabled' : ''}
+              id="to"
+              label="To"
+              max={slotCount - 1}
+              min="0"
+              onChange={e => {
+                e.preventDefault();
+                dispatch(setRangeLast(e.target.value));
+              }}
+              type="number"
+              value={rangeLast}
+            />
+            <button
+              disabled={isStarted ? 'disabled' : ''}
+              onClick={e => {
+                e.preventDefault();
+                dispatch(setRange());
+              }}
+              type="button"
+            >
+              Set range
+            </button>
+          </Row>
+          <Row>
+            <button
+              disabled={isStarted ? 'disabled' : ''}
+              onClick={e => {
+                e.preventDefault();
+                dispatch(clearAll());
+              }}
+              type="button"
+            >
+              Clear All
+            </button>
+            <button
+              disabled={isStarted ? 'disabled' : ''}
+              onClick={e => {
+                e.preventDefault();
+                dispatch(selectAll());
+              }}
+              type="button"
+            >
+              Select All
+            </button>
+          </Row>
+        </Section>
         <Slots />
-      </Section>
+      </div>
     );
   }
 }
