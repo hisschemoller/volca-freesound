@@ -168,16 +168,20 @@ class Help extends React.PureComponent {
               </p>
               <ul className={s.ol}>
                 <li>
-                  <i>Freesound settings</i> - Settings for the random sounds from freesound.org
+                  <i>Freesound settings</i> - Settings for the random sounds
+                  from freesound.org
                 </li>
                 <li>
-                  <i>Audio settings</i> - Change the audio files after they have been downloaded from Freesound.
+                  <i>Audio settings</i> - Change the audio files after they have
+                  been downloaded from Freesound.
                 </li>
                 <li>
-                  <i>Slot selection</i> - Which of the slots on the Volca Sample will receive new samples.
+                  <i>Slot selection</i> - Which of the slots on the Volca Sample
+                  will receive new samples.
                 </li>
                 <li>
-                  <i>File transfer</i> - Starts and stops the download and transfer process.
+                  <i>File transfer</i> - Starts and stops the download and
+                  transfer process.
                 </li>
               </ul>
               <p className={s.p} />
