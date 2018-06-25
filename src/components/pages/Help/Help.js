@@ -159,9 +159,9 @@ class Help extends React.PureComponent {
                 samples.
               </p>
               <p className={s.p}>
-                Any number of the 100 slots can be selected to receive a sample,
-                and because of the limited memory size the maximum length of the
-                random samples can be limited.
+                Any number of the 100 slots can be selected to receive a sample.
+                Because of the Volca&apos;s small memory size, a maximum sample
+                length can be set.
               </p>
               <p className={s.p}>
                 The app&apos;s screen is divided in 4 sections:
@@ -184,8 +184,37 @@ class Help extends React.PureComponent {
                   transfer process.
                 </li>
               </ul>
-              <p className={s.p} />
-              <p className={s.p} />
+              <p className={s.p}>
+                Samples are transferred to the Volca using an old MODEM type
+                signal. So once the app has downloaded an audio file from
+                freesound.org, it&apos;s first converted inside the app. You can
+                hear the signal if you start the app without the audio output
+                being connected to a Volca. PLEASE NOTE: listen at low volume,
+                because the the signal starts with a loud, high pitched beep.
+              </p>
+              <p className={s.p}>
+                Some remarks on sample transfer and tips for best results:
+              </p>
+              <ul className={s.ol}>
+                <li>
+                  Transfer is quite slow. You can expect it to take about 13
+                  times as long as a sample&apos;s duration.
+                </li>
+                <li>
+                  The computer&apos;s audio output is best set at - or close to
+                  maximum volume.
+                </li>
+                <li>
+                  Use fresh batteries or a power adapter for more reliable
+                  transfer.
+                </li>
+                <li>
+                  My own experience is that transfer is never very reliable. An
+                  error will occur after 10 or 20 samples, even with the Volca
+                  on a power adapter, a good quality soundcard and audio cable,
+                  and carefully set volume level.
+                </li>
+              </ul>
             </Section>
           </Col>
           <Col>
