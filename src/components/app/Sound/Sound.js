@@ -17,15 +17,17 @@ class Sound extends React.PureComponent {
     dispatch: PropTypes.func.isRequired,
     isDoubleSpeed: PropTypes.bool.isRequired,
     isNormalize: PropTypes.bool.isRequired,
+    isStarted: PropTypes.bool.isRequired,
   };
 
   render() {
-    const { dispatch, isDoubleSpeed, isNormalize } = this.props;
+    const { dispatch, isDoubleSpeed, isNormalize, isStarted } = this.props;
 
     return (
       <Section title="Audio settings">
         <Row>
           <FormControl
+            disabled={isStarted ? 'disabled' : ''}
             id="normalize"
             label="Normalize"
             type="checkbox"
@@ -37,6 +39,7 @@ class Sound extends React.PureComponent {
         </Row>
         <Row>
           <FormControl
+            disabled={isStarted ? 'disabled' : ''}
             id="doubleSpeed"
             label="Double speed"
             type="checkbox"
@@ -55,6 +58,7 @@ function mapStateToProps(state) {
   return {
     isDoubleSpeed: state.sounds.isDoubleSpeed,
     isNormalize: state.sounds.isNormalize,
+    isStarted: state.sounds.isStarted,
   };
 }
 

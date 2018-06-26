@@ -39,6 +39,7 @@ class Volca extends React.PureComponent {
         <Section title="Volca sample slot selection">
           <Row>
             <FormControl
+              disabled={isStarted ? 'disabled' : ''}
               id="from"
               label="From"
               max={slotCount - 1}

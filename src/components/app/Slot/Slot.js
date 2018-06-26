@@ -22,10 +22,11 @@ class Slot extends React.PureComponent {
         <div
           className={s.button}
           data-status={status}
-          disabled={isStarted ? 'disabled' : ''}
           onClick={e => {
             e.preventDefault();
-            dispatch(toggleSlot(index));
+            if (!isStarted) {
+              dispatch(toggleSlot(index));
+            }
           }}
           onKeyUp={() => null}
           role="button"

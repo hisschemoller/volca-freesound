@@ -15,6 +15,7 @@ class Freesound extends React.PureComponent {
     count: PropTypes.number.isRequired,
     dispatch: PropTypes.func.isRequired,
     durationMax: PropTypes.number.isRequired,
+    isStarted: PropTypes.bool.isRequired,
   };
 
   static defaultProps = {};
@@ -34,12 +35,13 @@ class Freesound extends React.PureComponent {
   }
 
   render() {
-    const { count, dispatch, durationMax } = this.props;
+    const { count, dispatch, durationMax, isStarted } = this.props;
 
     return (
       <Section title="Freesound settings">
         <Row>
           <FormControl
+            disabled={isStarted ? 'disabled' : ''}
             id="duration_max"
             label="Max. duration"
             max="none"
@@ -73,6 +75,7 @@ function mapStateToProps(state) {
   return {
     count: state.sounds.count,
     durationMax: state.sounds.durationMax,
+    isStarted: state.sounds.isStarted,
   };
 }
 
