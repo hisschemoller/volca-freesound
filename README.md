@@ -8,7 +8,7 @@ This app downloads random files from the Freesound audio database and transfers 
 
 ### Korg Volca Sample
 
-The [Volca Sample](http://www.korg.com/us/products/dj/volca_sample/) is a musical instrument by Japanese electronic instrument maker [Korg](http://www.korg.com/us/) that plays audio samples. The unusual thing about the Volca Sample is that it can't record sound. So it's not a sampler in the proper sense of the word, but a sample player. Samples must be transferred with a dedicated computer application.
+The [Volca Sample](http://www.korg.com/us/products/dj/volca_sample/) is a music instrument by Japanese electronic manufacturer [Korg](http://www.korg.com/us/) that plays audio samples. The unusual thing about the Volca Sample is that it can't record sound. So it's not a sampler in the proper sense of the word, but a sample _player_. Samples must be transferred with a dedicated computer application.
 
 ### Freesound
 
@@ -18,9 +18,10 @@ The [Volca Sample](http://www.korg.com/us/products/dj/volca_sample/) is a musica
 
 1. Open [https://hisschemoller.github.io/volca-freesound/](https://hisschemoller.github.io/volca-freesound/)
 2. Set the computer's volume level close to maximum.
-3. For a neutral signal make sure any sound effects or equalizers on the computer are switched off.
+3. For a neutral, clear signal make sure any sound effects or equalizers on the computer are switched off.
 4. Connect the computer's audio output to the Volca 'Sync in' input.
 5. Switch on the Volca.
+6. Select at least one slot in the app's grid of sample slots. That's the destination for the sample.
 6. Press 'Start' on the Volca Freesound page to start the transfer. 
 
 #### Signs that things work
@@ -61,8 +62,6 @@ You can interrupt the transfer by pressing Stop. The current transfer will conti
 
 After file transfer is finished the button will appear that lets you download the receipt text file with all the transferred samples' details.
 
-
-
 ## Sample and slot settings
 
 Before starting transfer you might want to adjust some settimgs.
@@ -71,11 +70,19 @@ Before starting transfer you might want to adjust some settimgs.
 
 The maximum length of samples can be set here. In seconds. The Volca Sample has 4MB of memory to store samples, which is not much. The shorter the duration, the more of the 100 sample slots will likely be filled.
 
-When you change the maximum duration, the amount of available samples will be updated.
+When you change the maximum duration, the amount of available samples displayed underneath will be updated.
+
+#### Normalize
+
+The volume level of the downloaded files will be maximized before they are transferred to the Volca.
+
+#### Double speed
+
+Playback speed of the downloaded files will be doubled before they are transferred to the Volca Sample. This way they will take up only half the memory, so twice as much audio will fit in the Volca's 4MB. The samples' pitch however is doubled as well, so they must be pitched down twelve steps (one octave) to play back at their original pitch again.
 
 #### Slots grid
 
-The grid represents the 100 sample slots available on the Volca Sample. It lets you select individual slots in which random samples will be loaded. Click a slot to select or deselect it. When transfer starts only the selcted slots will be overwritten with new samples.
+The grid represents the 100 sample slots available on the Volca Sample. It lets you select individual slots in which random samples will be loaded. Click a slot to select or deselect it. When transfer starts only the selected slots will be overwritten with new samples.
 
 #### Clear or select all slots
 
@@ -93,15 +100,18 @@ Transfer works best with a clear and loud audio signal. Switch off any audio eff
 
 Use new batteries or a power adapter on the Volca Sample.
 
+## Error messages on the Volca Sample
+
 #### Error CRC
 
+I'll add information as soon as I know what this error means.
 
 #### Error DCOD
 
-
+I'll add information as soon as I know what this error means.
 
 ## About
 
-To transfer samples Volca Freesound uses [Syro.js](https://github.com/ptigas/syro.js), a Javascript version of the [Korg Syro SDK](http://korginc.github.io/volcasample/) that was made by [Panagiotis Tigas](http://ptigas.com/).
+To transfer samples the app uses [Syro.js](https://github.com/ptigas/syro.js), a Javascript version of the [Korg Syro SDK](http://korginc.github.io/volcasample/) that was made by [Panagiotis Tigas](http://ptigas.com/).
 
 The app itself is built on [Kriasoft](https://www.kriasoft.com/)'s [React Starter Kit](https://github.com/kriasoft/react-starter-kit). It's my first React and Redux project in fact, that I built to get to know and use the framework and its tools.
