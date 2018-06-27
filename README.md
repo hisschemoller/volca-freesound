@@ -44,7 +44,7 @@ On the Volca Sample
 
 The app fills selected sample slots on the Volca Sample with random sounds from the Freesound database.
 
-#### Freesound sample licences and ownership
+#### Freesound sample licenses and ownership
 
 Audio files on Freesound can be of any type, WAV, FLAC, OGG etc. The files can only be accessed by registered users. Each sound however has an MP3 preview file that is free to download. It's these MP3 files that are used by this app. So a Freesound account is not necessary.
 
