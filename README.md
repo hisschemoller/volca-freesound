@@ -8,7 +8,7 @@ This app downloads random files from the Freesound audio database and transfers 
 
 ### Korg Volca Sample
 
-The [Volca Sample](http://www.korg.com/us/products/dj/volca_sample/) is a music instrument by Japanese electronic manufacturer [Korg](http://www.korg.com/us/) that plays audio samples. The unusual thing about the Volca Sample is that it can't record sound. So it's not a sampler in the proper sense of the word, but a sample _player_. Samples must be transferred with a dedicated computer application.
+The [Volca Sample](http://www.korg.com/us/products/dj/volca_sample/) is a music instrument by Japanese manufacturer [Korg](http://www.korg.com/us/). It sequences and plays audio samples. The unusual thing about the Volca Sample is that it can't record sound. So it's not a sampler in the proper sense of the word, but a sample _player_. Samples must be transferred with a dedicated computer application.
 
 ### Freesound
 
@@ -16,31 +16,35 @@ The [Volca Sample](http://www.korg.com/us/products/dj/volca_sample/) is a music 
 
 ## Quick start
 
-1. Open [https://hisschemoller.github.io/volca-freesound/](https://hisschemoller.github.io/volca-freesound/)
-2. Set the computer's volume level close to maximum.
-3. For a neutral, clear signal make sure any sound effects or equalizers on the computer are switched off.
-4. Connect the computer's audio output to the Volca 'Sync in' input.
-5. Switch on the Volca.
-6. Select at least one slot in the app's grid of sample slots. That's the destination for the sample.
-6. Press 'Start' on the Volca Freesound page to start the transfer. 
+1.  Open [https://hisschemoller.github.io/volca-freesound/](https://hisschemoller.github.io/volca-freesound/)
+2.  Set the computer's volume level close to maximum.
+3.  For a neutral, clear signal make sure any sound effects or equalizers on the computer are switched off.
+4.  Connect the computer's audio output to the Volca 'Sync in' input.
+5.  Switch on the Volca.
+6.  Select at least one slot in the app's grid of sample slots. That's the destination for the sample.
+7.  Press 'Start' on the Volca Freesound page to start the transfer.
 
 #### Signs that things work
 
 On the Volca Freesound page
-- One of the squares in the grid of sample slots lights up to indicate a transfer is going on to that sample slot.
-- The progress bar shows the percentage of transfer that is done.
+
+* One of the squares in the grid of sample slots lights up to indicate a transfer is going on to that sample slot.
+* The progress bar shows the percentage of transfer that is done.
 
 On the Volca Sample
-- The display switches between the word 'data' and the number of the slot to indicate it's receiving sample data.
-- The various LEDs on the interface pulsate while transferring.
+
+* The display switches between the word 'data' and the number of the slot to indicate it's receiving sample data.
+* The various LEDs on the interface pulsate while transferring.
 
 ## Overview
 
 The app fills selected sample slots on the Volca Sample with random sounds from the Freesound database.
 
+![Application screenshot](public/img/app_screen.png?raw=true 'Application screenshot')
+
 #### Freesound sample licences and ownership
 
-Audio files on Freesound can be of any type, WAV, FLAC, OGG etc. The files can only be accessed by registered users. Each sound however has an MP3 preview file that is free to download. It's these MP3 files that are used by this app. So a Freesound account is not necessary. 
+Audio files on Freesound can be of any type, WAV, FLAC, OGG etc. The files can only be accessed by registered users. Each sound however has an MP3 preview file that is free to download. It's these MP3 files that are used by this app. So a Freesound account is not necessary.
 
 To use the audio in published or commercial projects however, the original high quality files might be desirable. It's also important to know that each sound can have its own licence type, with its own restrictions on the use of the sound.
 
