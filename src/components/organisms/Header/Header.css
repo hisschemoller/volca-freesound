@@ -15,10 +15,11 @@
   flex-wrap: wrap;
   margin: 0 auto;
   max-width: var(--max-content-width);
-  padding: 40px 0 10px;
+  padding: 40px 0 20px;
 }
 
 .brand {
+  margin-bottom: 20px;
   text-decoration: none;
 }
 
@@ -29,6 +30,12 @@
 }
 
 @media (min-width: 600px) {
+  .root {
+    padding-bottom: 10px;
+  }
+  .brand {
+    margin-bottom: 0;
+  }
   .brandTxt {
     font-size: 42px;
   }
