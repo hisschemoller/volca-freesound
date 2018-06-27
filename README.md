@@ -10,9 +10,13 @@ This app downloads random files from the Freesound audio database and transfers 
 
 The [Volca Sample](http://www.korg.com/us/products/dj/volca_sample/) is a music instrument by Japanese manufacturer [Korg](http://www.korg.com/us/). It sequences and plays audio samples. The unusual thing about the Volca Sample is that it can't record sound. So it's not a sampler in the proper sense of the word, but a sample _player_. Samples must be transferred with a dedicated computer application.
 
+![Volca Sample](public/img/volca_sample.png?raw=true 'Volca Sample')
+
 ### Freesound
 
 [www.freesound.org](http://https.freesound.org) is a collaborative audio database where anyone can upload audio samples and recordings and share them under Creative Commons licenses. It's an initiative by the [Music Technology Group](https://www.upf.edu/web/mtg) of Universitat Pompeu Fabra in Barcelona. More information on their [about](https://freesound.org/help/about/) page. Freesound maintains an API to retrieve information and sounds from their database.
+
+![Freesound website](public/img/freesound_screen.png?raw=true 'Freesound website')
 
 ## Quick start
 
@@ -40,8 +44,6 @@ On the Volca Sample
 
 The app fills selected sample slots on the Volca Sample with random sounds from the Freesound database.
 
-![Application screenshot](public/img/app_screen.png?raw=true 'Application screenshot')
-
 #### Freesound sample licences and ownership
 
 Audio files on Freesound can be of any type, WAV, FLAC, OGG etc. The files can only be accessed by registered users. Each sound however has an MP3 preview file that is free to download. It's these MP3 files that are used by this app. So a Freesound account is not necessary.
@@ -52,7 +54,7 @@ So, to be able to store the information about the downloaded samples, the app le
 
 If you use or appreciate a sound, it always nice torate the sound or let the uploader know in a comment on the Freesound site.
 
-#### Usage
+## Usage
 
 When the app starts up it's set by default to overwrite all 100 sample slots on the Volca Sample. You might want to only select specific slots, so samples that are already on the machine and that you want to keep are not overwritten.
 
@@ -66,9 +68,11 @@ You can interrupt the transfer by pressing Stop. The current transfer will conti
 
 After file transfer is finished the button will appear that lets you download the receipt text file with all the transferred samples' details.
 
+![Application screenshot](public/img/app_screen.png?raw=true 'Application screenshot')
+
 ## Sample and slot settings
 
-Before starting transfer you might want to adjust some settimgs.
+Before starting transfer you might want to adjust some settings.
 
 #### Maximum duration
 
