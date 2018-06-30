@@ -47,8 +47,9 @@ class Html extends React.PureComponent {
           {scripts.map(script => (
             <link key={script} rel="preload" href={script} as="script" />
           ))}
-          <link rel="manifest" href="/site.webmanifest" />
-          <link rel="apple-touch-icon" href="/icon.png" />
+          <link rel="manifest" href="site.webmanifest" />
+          <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+          <link rel="apple-touch-icon" href="icon.png" />
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto"
