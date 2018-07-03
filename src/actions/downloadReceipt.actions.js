@@ -21,21 +21,24 @@ function download(filename, text) {
 
 /**
  * Create the receipt text and file from the received sound's data.
+ * Search for the last transfer to a slot, to avoid overwritten earlier transfers.
  */
 export default function downloadReceipt() {
   return (dispatch, getState) => {
     let fileContent = '';
     const header = `Sounds downloaded from Freesound.org and transferred to the Korg Volca Sample\n\n\n`;
     const state = getState();
-    const slotIndexes = [];
     const reversedIDs = [...state.sounds.sounds.allIds].reverse();
-    reversedIDs.forEach(soundID => {
-      const sound = state.sounds.sounds.byId[soundID];
 
-      // only add the latest transfer to a slot
-      if (slotIndexes.find(sound.slotIndex) === 'undefined') {
-        slotIndexes.push(sound.slotIndex);
+    for (let i = 0, n = state.sounds.slotCount; i < n; i += 1) {
+      // get the last sound transferred to the current slot
+      const soundIDForSlot = reversedIDs.find(
+        soundID => state.sounds.sounds.byId[soundID].slotIndex === i,
+      );
 
+      // if found create a text entry for the sound
+      if (soundIDForSlot !== undefined) {
+        const sound = state.sounds.sounds.byId[soundIDForSlot];
         // create the sound information entry
         const item = `Sample slot: ${sound.slotIndex}\n\nSound name: ${
           sound.name
@@ -45,10 +48,11 @@ export default function downloadReceipt() {
           sound.username
         }\nFreesound URL: ${sound.url}\n\n.............\n\n`;
 
-        // prepend item, because IDs are reversed
-        fileContent = item + fileContent;
+        // append item to text
+        fileContent += item;
       }
-    });
+    }
+
     fileContent = header + fileContent;
     download('volca-freesound-receipt.txt', fileContent);
   };
