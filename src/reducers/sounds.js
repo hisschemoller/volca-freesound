@@ -174,6 +174,10 @@ export default function sounds(state = initialState, action) {
         slots: new Array(state.slotCount).fill(0, 0, state.slotCount),
       };
     case SELECT_ALL:
+      return {
+        ...state,
+        slots: new Array(state.slotCount).fill(1, 0, state.slotCount),
+      };
     case INITIALIZE:
       return {
         ...state,
