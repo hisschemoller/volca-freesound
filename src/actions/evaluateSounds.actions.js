@@ -14,7 +14,9 @@ export default function evaluateSounds() {
       state.sounds.slots.findIndex(slot => slot === 1 || slot === 3) !== -1 &&
       !state.sounds.isPaused
     ) {
-      dispatch(fetchRandomSound());
+      setTimeout(() => {
+        dispatch(fetchRandomSound());
+      }, 1000);
     } else {
       dispatch(stop());
     }
