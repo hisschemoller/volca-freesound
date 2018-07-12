@@ -29,13 +29,20 @@
   font-weight: 700;
 }
 
+.brandLogo {
+  margin: 0 8px 4px 8px;
+  width: 27px;
+}
+
 @media (min-width: 600px) {
   .root {
     padding-bottom: 10px;
   }
+
   .brand {
     margin-bottom: 0;
   }
+
   .brandTxt {
     font-size: 42px;
   }

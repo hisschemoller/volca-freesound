@@ -18,7 +18,13 @@ class Header extends React.PureComponent {
     return (
       <div className={s.root}>
         <Link className={s.brand} to="main">
-          <span className={s.brandTxt}>Volca Freesound</span>
+          <span className={s.brandTxt}>
+            Volca<img
+              src="img/logo.svg"
+              alt="Volca Freesound logo"
+              className={s.brandLogo}
+            />Freesound
+          </span>
         </Link>
         <Navigation />
       </div>
