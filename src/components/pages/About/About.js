@@ -35,6 +35,16 @@ class About extends React.PureComponent {
               surprise yourself and fill its memory with a collection of random
               samples.
             </p>
+            <p className={s.p}>
+              Source files:<br />
+              <a
+                href="https://github.com/hisschemoller/volca-freesound"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                github.com/hisschemoller/volca-freesound
+              </a>
+            </p>
             <p className={s.p} />
           </Section>
           <Section title="About myself">
