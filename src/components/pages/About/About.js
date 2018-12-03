@@ -35,11 +35,21 @@ class About extends React.PureComponent {
               surprise yourself and fill its memory with a collection of random
               samples.
             </p>
+            <p className={s.p}>
+              Source files:<br />
+              <a
+                href="https://github.com/hisschemoller/volca-freesound"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                github.com/hisschemoller/volca-freesound
+              </a>
+            </p>
             <p className={s.p} />
           </Section>
           <Section title="About myself">
             <p className={s.p}>
-              I'm a frontend developer from Amsterdam, the Netherlands. I'm
+              I&apos;m a frontend developer from Amsterdam, the Netherlands. I&apos;m
               interested in electronic music and like to try to combine coding
               and making music.{' '}
             </p>
@@ -59,7 +69,7 @@ class About extends React.PureComponent {
             <p className={s.p}>
               This app started as a project for me to learn and get some
               experience with the React Javascript framework and Redux state
-              management. I used Kriasoft's React Starter Kit as a basis for
+              management. I used Kriasofts React Starter Kit as a basis for
               this project.
             </p>
             <p className={s.p}>
