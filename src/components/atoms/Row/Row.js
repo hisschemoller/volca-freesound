@@ -7,11 +7,21 @@ import s from './Row.css';
 class Section extends React.PureComponent {
   static propTypes = {
     children: PropTypes.node.isRequired,
+    hideBottomBorder: PropTypes.bool,
+  };
+
+  static defaultProps = {
+    hideBottomBorder: false,
   };
 
   render() {
-    const { children } = this.props;
-    return <div className={s.root}>{children}</div>;
+    const { children, hideBottomBorder } = this.props;
+    const style = hideBottomBorder ? { borderBottom: 'none' } : null;
+    return (
+      <div className={s.root} style={style}>
+        {children}
+      </div>
+    );
   }
 }
 

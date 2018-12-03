@@ -22,13 +22,18 @@ class Transfer extends React.PureComponent {
   static defaultProps = {};
 
   render() {
+    const sectionStyle = {
+      borderBottom: 'none',
+    };
+
     let btnText = 'Start';
     if (this.props.isStarted) {
       btnText = this.props.isPaused ? 'Stopping...' : 'Stop';
     }
+
     return (
-      <Section title="File transfer">
-        <Row>
+      <Section title="File transfer" style={sectionStyle}>
+        <Row hideBottomBorder={!this.props.showReceipt}>
           <progress
             max="1"
             value={this.props.position}
