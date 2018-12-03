@@ -22,32 +22,30 @@ class Transfer extends React.PureComponent {
   static defaultProps = {};
 
   render() {
+    const { dispatch, isPaused, isStarted, position, showReceipt } = this.props;
+
     const sectionStyle = {
       borderBottom: 'none',
     };
 
     let btnText = 'Start';
-    if (this.props.isStarted) {
-      btnText = this.props.isPaused ? 'Stopping...' : 'Stop';
+    if (isStarted) {
+      btnText = isPaused ? 'Stopping...' : 'Stop';
     }
 
     return (
       <Section title="File transfer" style={sectionStyle}>
-        <Row hideBottomBorder={!this.props.showReceipt}>
-          <progress
-            max="1"
-            value={this.props.position}
-            className={s.progress}
-          />
-          <span>{Math.round(this.props.position * 100)}%</span>
+        <Row hideBottomBorder={!showReceipt}>
+          <progress max="1" value={position} className={s.progress} />
+          <span>{Math.round(position * 100)}%</span>
           <button
             onClick={e => {
               e.preventDefault();
-              if (this.props.isStarted) {
-                this.props.dispatch(pause());
+              if (isStarted) {
+                dispatch(pause());
               } else {
-                this.props.dispatch(start());
-                this.props.dispatch(evaluateSounds());
+                dispatch(start());
+                dispatch(evaluateSounds());
               }
             }}
             type="button"
@@ -55,11 +53,7 @@ class Transfer extends React.PureComponent {
             {btnText}
           </button>
         </Row>
-        <div
-          className={
-            s.receipt + (this.props.showReceipt ? ` ${s.receiptreveal}` : '')
-          }
-        >
+        <div className={s.receipt + (showReceipt ? ` ${s.receiptreveal}` : '')}>
           <Row>
             <span className={s.textline}>
               File transfer has finished. Please download your receipt.
@@ -69,7 +63,7 @@ class Transfer extends React.PureComponent {
             <button
               onClick={e => {
                 e.preventDefault();
-                this.props.dispatch(downloadReceipt());
+                dispatch(downloadReceipt());
               }}
               type="button"
             >
