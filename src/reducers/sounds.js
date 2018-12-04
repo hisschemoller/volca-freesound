@@ -129,18 +129,24 @@ export default function sounds(state = initialState, action) {
     case SET_RANGE_FIRST:
       return {
         ...state,
-        rangeFirst: Math.max(
-          0,
-          Math.min(Math.round(action.value), state.slotCount - 1),
-        ),
+        rangeFirst:
+          action.value === ''
+            ? ''
+            : Math.max(
+                0,
+                Math.min(Math.round(action.value), state.slotCount - 1),
+              ),
       };
     case SET_RANGE_LAST:
       return {
         ...state,
-        rangeLast: Math.max(
-          0,
-          Math.min(Math.round(action.value), state.slotCount - 1),
-        ),
+        rangeLast:
+          action.value === ''
+            ? ''
+            : Math.max(
+                0,
+                Math.min(Math.round(action.value), state.slotCount - 1),
+              ),
       };
     case SET_DURATION_MAX:
       return {

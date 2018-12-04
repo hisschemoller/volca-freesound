@@ -20,8 +20,10 @@ class Volca extends React.PureComponent {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     isStarted: PropTypes.bool.isRequired,
-    rangeFirst: PropTypes.number.isRequired,
-    rangeLast: PropTypes.number.isRequired,
+    rangeFirst: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+      .isRequired,
+    rangeLast: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+      .isRequired,
     slotCount: PropTypes.number.isRequired,
   };
 
@@ -33,6 +35,9 @@ class Volca extends React.PureComponent {
       rangeLast,
       slotCount,
     } = this.props;
+
+    const isDisabled =
+      typeof rangeFirst !== 'number' || typeof rangeLast !== 'number';
 
     return (
       <div>
@@ -65,7 +70,7 @@ class Volca extends React.PureComponent {
               value={rangeLast}
             />
             <button
-              disabled={isStarted ? 'disabled' : ''}
+              disabled={isStarted || isDisabled}
               onClick={e => {
                 e.preventDefault();
                 dispatch(setRange());
