@@ -14,7 +14,8 @@ class Freesound extends React.PureComponent {
   static propTypes = {
     count: PropTypes.number.isRequired,
     dispatch: PropTypes.func.isRequired,
-    durationMax: PropTypes.number.isRequired,
+    durationMax: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+      .isRequired,
     isStarted: PropTypes.bool.isRequired,
   };
 

@@ -9,22 +9,29 @@ export default function fetchSounds(payload) {
   return (dispatch, getState) => {
     const state = getState();
     const { query, page, pageSize } = { ...payload };
-    const fields = 'id';
-    const filter = `duration:[0 TO ${state.sounds.durationMax}]`;
-    dispatch(requestSounds(query));
-    return fetch(
-      `${
-        api.url
-      }search/text/?format=json&query=${query}&page=${page}&page_size=${pageSize}&fields=${fields}&filter=${filter}&token=${
-        api.token
-      }`,
-    )
-      .then(response => response.json(), error => dispatch(rejectSounds(error)))
-      .then(
-        json => {
-          dispatch(receiveSounds(json));
-        },
-        error => dispatch(rejectSounds(error)),
-      );
+    if (state.sounds.durationMax === '') {
+      dispatch(rejectSounds());
+    } else {
+      const fields = 'id';
+      const filter = `duration:[0 TO ${state.sounds.durationMax}]`;
+      dispatch(requestSounds(query));
+      return fetch(
+        `${
+          api.url
+        }search/text/?format=json&query=${query}&page=${page}&page_size=${pageSize}&fields=${fields}&filter=${filter}&token=${
+          api.token
+        }`,
+      )
+        .then(
+          response => response.json(),
+          error => dispatch(rejectSounds(error)),
+        )
+        .then(
+          json => {
+            dispatch(receiveSounds(json));
+          },
+          error => dispatch(rejectSounds(error)),
+        );
+    }
   };
 }

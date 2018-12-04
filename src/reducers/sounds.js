@@ -18,6 +18,7 @@ import {
   PLAY_START,
   RECEIVE_SOUNDS,
   RECEIVE_RANDOM_SOUND,
+  REJECT_SOUNDS,
   REQUEST_RANDOM_SOUND,
   SELECT_ALL,
   SET_DURATION_MAX,
@@ -104,6 +105,11 @@ export default function sounds(state = initialState, action) {
         ...state,
         count: action.json.count,
       };
+    case REJECT_SOUNDS:
+      return {
+        ...state,
+        count: 0,
+      };
     case SET_RANGE:
       return {
         ...state,
@@ -139,7 +145,7 @@ export default function sounds(state = initialState, action) {
     case SET_DURATION_MAX:
       return {
         ...state,
-        durationMax: Math.max(0, action.value),
+        durationMax: action.value === '' ? '' : Math.max(0, action.value),
       };
     case TOGGLE_SLOT:
       return {

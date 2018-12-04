@@ -200,6 +200,11 @@ button {
   outline: none;
   white-space: nowrap;
 }
+button[disabled] {
+  color: var(--grey2);
+  cursor: default;
+  opacity: 0.5;
+}
 
 .root {
   padding: 0 10px; 
