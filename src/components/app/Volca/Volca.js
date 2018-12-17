@@ -39,6 +39,10 @@ class Volca extends React.PureComponent {
     const isDisabled =
       typeof rangeFirst !== 'number' || typeof rangeLast !== 'number';
 
+    const formControlStyle = {
+      width: '36%',
+    };
+
     return (
       <div>
         <Section title="Volca sample slot selection">
@@ -53,6 +57,7 @@ class Volca extends React.PureComponent {
                 e.preventDefault();
                 dispatch(setRangeFirst(e.target.value));
               }}
+              style={formControlStyle}
               type="number"
               value={rangeFirst}
             />
@@ -66,6 +71,7 @@ class Volca extends React.PureComponent {
                 e.preventDefault();
                 dispatch(setRangeLast(e.target.value));
               }}
+              style={formControlStyle}
               type="number"
               value={rangeLast}
             />
