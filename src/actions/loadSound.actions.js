@@ -172,7 +172,7 @@ export default function loadSound(url) {
       fetch(url).then(response => {
         response.arrayBuffer().then(arrayBuffer => {
           const audioContext = getAudioContext();
-          audioContext.decodeAudioData(arrayBuffer).then(audioBuffer => {
+          audioContext.decodeAudioData(arrayBuffer, audioBuffer => {
             const state = getState();
 
             // normalize the sample
@@ -199,11 +199,12 @@ export default function loadSound(url) {
               const fileReader = new FileReader();
               fileReader.onload = () => {
                 const syroArrayBuffer = fileReader.result;
-                audioContext
-                  .decodeAudioData(syroArrayBuffer)
-                  .then(syroAudioBuffer => {
+                audioContext.decodeAudioData(
+                  syroArrayBuffer,
+                  syroAudioBuffer => {
                     dispatch(playSound(audioContext, syroAudioBuffer));
-                  });
+                  },
+                );
               };
               fileReader.readAsArrayBuffer(syroBlob);
             });
