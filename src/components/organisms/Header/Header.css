@@ -25,13 +25,19 @@
 
 .brandTxt {
   color: var(--red);
-  font-size: 38px;
+  font-size: 37px;
   font-weight: 700;
 }
 
 .brandLogo {
   margin: 0 8px 4px 8px;
   width: 27px;
+}
+
+.version {
+  color: var(--grey1);
+  font-size: 12px;
+  margin: 0 0 25px 6px;
 }
 
 @media (min-width: 600px) {
@@ -45,5 +51,9 @@
 
   .brandTxt {
     font-size: 42px;
+  }
+
+  .version {
+    margin-bottom: 7px;
   }
 }

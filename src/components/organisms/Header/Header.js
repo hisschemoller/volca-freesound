@@ -26,6 +26,7 @@ class Header extends React.PureComponent {
             />Freesound
           </span>
         </Link>
+        <span className={s.version}>v1.01</span>
         <Navigation />
       </div>
     );
