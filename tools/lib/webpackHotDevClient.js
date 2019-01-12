@@ -7,6 +7,7 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
+import { NativeEventSource, EventSourcePolyfill } from 'event-source-polyfill';
 import hotClient from 'webpack-hot-middleware/client';
 import launchEditorEndpoint from 'react-dev-utils/launchEditorEndpoint';
 import formatWebpackMessages from 'react-dev-utils/formatWebpackMessages';
@@ -17,6 +18,8 @@ import {
   startReportingRuntimeErrors,
   stopReportingRuntimeErrors,
 } from 'react-error-overlay';
+
+window.EventSource = NativeEventSource || EventSourcePolyfill;
 
 setEditorHandler(errorLocation => {
   const fileName = encodeURIComponent(errorLocation.fileName);

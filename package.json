@@ -79,6 +79,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-react": "^7.7.0",
+    "event-source-polyfill": "^1.0.5",
     "file-loader": "^1.1.11",
     "flow-bin": "^0.68.0",
     "front-matter": "^2.3.0",
