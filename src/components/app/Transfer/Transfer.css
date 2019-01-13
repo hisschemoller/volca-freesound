@@ -1,9 +1,10 @@
 @import '../../variables.css';
 
 .progress {
+  border: 1px solid var(--grey2);
   flex-grow: 1;
-  height: var(--row-height);
-  margin: 0 var(--text-padding);
+  height: calc(var(--row-height) / 4);
+  margin: calc(var(--row-height) * 0.375) var(--text-padding) 0 var(--text-padding);
 }
 
 .receipt {
