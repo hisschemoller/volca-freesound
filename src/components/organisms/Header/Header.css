@@ -26,7 +26,7 @@
 .brandTxt {
   color: var(--red);
   font-size: 37px;
-  font-weight: 700;
+  font-weight: normal;
 }
 
 .brandLogo {
