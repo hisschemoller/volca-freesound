@@ -128,7 +128,9 @@ The app itself is built on [Kriasoft](https://www.kriasoft.com/)'s [React Starte
 
 ## Change log
 
-### v1.01 13-01-2019
+### v1.01 
+
+13-01-2019
 
 - Progress bar styling more consistent on all browsers.
 - Transferring of multiple sounds fixed for MS Edge. Edge didn't detect the finish of a single sound's transfer
