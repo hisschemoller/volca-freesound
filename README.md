@@ -6,6 +6,8 @@ This app downloads random files from the Freesound audio database and transfers 
 
 [https://hisschemoller.github.io/volca-freesound/](https://hisschemoller.github.io/volca-freesound/)
 
+Newest version: 1.01 (see change log at the bottom of this page)
+
 ### Korg Volca Sample
 
 The [Volca Sample](http://www.korg.com/us/products/dj/volca_sample/) is a music instrument by Japanese manufacturer [Korg](http://www.korg.com/us/). It sequences and plays audio samples. The unusual thing about the Volca Sample is that it can't record sound. So it's not a sampler in the proper sense of the word, but a sample _player_. Samples must be transferred with a dedicated computer application.
@@ -123,3 +125,14 @@ I'll add information as soon as I know what this error means.
 To transfer samples the app uses [Syro.js](https://github.com/ptigas/syro.js), a Javascript version of the [Korg Syro SDK](http://korginc.github.io/volcasample/) that was made by [Panagiotis Tigas](http://ptigas.com/).
 
 The app itself is built on [Kriasoft](https://www.kriasoft.com/)'s [React Starter Kit](https://github.com/kriasoft/react-starter-kit). It's my first React and Redux project in fact, that I built to get to know and use the framework and its tools.
+
+## Change log
+
+### v1.01 13-01-2019
+
+- Progress bar styling more consistent on all browsers.
+- Transferring of multiple sounds fixed for MS Edge. Edge didn't detect the finish of a single sound's transfer
+- Download of receipt file fixed for MS Edge.
+- Line breaks in receipt text file fixed for MS Windows.
+- Version number in header
+- Various small browser dependent styling fixes
