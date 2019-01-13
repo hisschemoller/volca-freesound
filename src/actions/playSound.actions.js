@@ -6,6 +6,13 @@ const playStart = makeActionCreator(PLAY_START, 'duration');
 const playProgress = makeActionCreator(PLAY_PROGRESS, 'position');
 const playEnd = makeActionCreator(PLAY_END);
 
+function bufferSourceEnded(dispatch, intervalID) {
+  clearInterval(intervalID);
+  dispatch(playEnd());
+  dispatch(evaluateSounds());
+}
+
+
 export default function playSound(audioContext, audioBuffer) {
   return dispatch => {
     let intervalID;
@@ -13,9 +20,7 @@ export default function playSound(audioContext, audioBuffer) {
     bufferSource.buffer = audioBuffer;
     bufferSource.connect(audioContext.destination);
     bufferSource.onended = () => {
-      clearInterval(intervalID);
-      dispatch(playEnd());
-      dispatch(evaluateSounds());
+      bufferSourceEnded(dispatch, intervalID);
     };
     bufferSource.start();
     dispatch(playStart(audioBuffer.duration * bufferSource.playbackRate.value));
@@ -24,9 +29,12 @@ export default function playSound(audioContext, audioBuffer) {
     const duration =
       audioBuffer.duration * bufferSource.playbackRate.value * 1000;
     intervalID = setInterval(() => {
-      dispatch(
-        playProgress(Math.min((performance.now() - startTime) / duration), 1),
-      );
+      const progress = (performance.now() - startTime) / duration;
+      dispatch(playProgress(Math.min(progress, 1)));
+      if (progress > 1) {
+        bufferSource.onended = null;
+        bufferSourceEnded(dispatch, intervalID);
+      }
     }, 200);
   };
 }
