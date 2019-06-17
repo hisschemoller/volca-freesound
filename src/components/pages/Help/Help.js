@@ -153,7 +153,7 @@ class Help extends React.PureComponent {
         <h2 className={s.h2}>Overview</h2>
         <Grid>
           <Col>
-            <Section title="">
+            <Section title="General overview">
               <p className={s.p}>
                 The Volca Sample has 4MB memory that can hold a maximum of 100
                 samples.
@@ -264,6 +264,13 @@ class Help extends React.PureComponent {
                   button.
                 </li>
               </ul>
+            </Section>
+            <Section title="Issues">
+              <p className={s.p}>
+                In Safari on the iPhone the receipt text file will replace the
+                app in the browser, so you must use the browser&apos;s Back
+                button to return to the app.
+              </p>
             </Section>
           </Col>
         </Grid>
