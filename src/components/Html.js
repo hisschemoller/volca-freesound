@@ -44,6 +44,15 @@ class Html extends React.PureComponent {
           <title>{title}</title>
           <meta name="description" content={description} />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta property="og:title" content="Volca-Freesound" />
+          <meta
+            property="og:description"
+            content="Fill the Korg Volca Sample with random samples from Freesound.org."
+          />
+          <meta
+            property="og:image"
+            content="https://hisschemoller.github.io/volca-freesound/img/volca_freesound_preview.jpg"
+          />
           {scripts.map(script => (
             <link key={script} rel="preload" href={script} as="script" />
           ))}
