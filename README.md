@@ -1,5 +1,7 @@
 # Volca Freesound
 
+<i>(Note: the project is archived. I had an update in mind, but it's too much trouble to start the project up again because of the React framework used.)</i>
+
 ### Fill the [Korg Volca Sample](http://www.korg.com/us/products/dj/volca_sample/) with random samples from [Freesound.org](https://freesound.org/).
 
 This app downloads random files from the Freesound audio database and transfers them to a Korg Volca Sample connected to the computer's audio output. The app runs in any reasonably modern browser, desktop or mobile, as long as the device has a headphone or audio output. Please find the Volca Freesound app here:
